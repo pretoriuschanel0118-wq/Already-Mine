@@ -9,14 +9,463 @@
 
 <title>Already Mine ✨</title>
 
+
 <link rel="manifest" href="manifest.json">
 
 <meta name="theme-color" content="#d63384">
-<link rel="stylesheet" href="style.css">
+
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+
+
+:root{
+
+--light:#ffd6e7;
+--dark:#d63384;
+--text:#342b38;
+--card:rgba(255,255,255,.85);
+
+}
+
+
+
+body{
+
+min-height:100vh;
+
+background:
+linear-gradient(
+135deg,
+var(--light),
+var(--dark)
+);
+
+color:var(--text);
+
+display:flex;
+
+justify-content:center;
+
+padding:20px;
+
+transition:.5s;
+
+}
+
+
+
+.app{
+
+width:100%;
+
+max-width:430px;
+
+}
+
+
+
+
+
+/* SCREENS */
+
+
+.screen{
+
+display:none;
+
+animation:fade .4s ease;
+
+}
+
+
+
+.screen.active{
+
+display:block;
+
+}
+
+
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+
+/* HEADER */
+
+
+.logo{
+
+font-size:80px;
+
+text-align:center;
+
+margin-top:30px;
+
+}
+
+
+
+h1{
+
+font-size:38px;
+
+text-align:center;
+
+margin:20px 0;
+
+}
+
+
+
+h2{
+
+margin-bottom:15px;
+
+}
+
+
+
+.subtitle{
+
+text-align:center;
+
+line-height:1.6;
+
+color:#756878;
+
+margin-bottom:30px;
+
+}
+
+
+
+
+
+/* CARDS */
+
+
+.card{
+
+background:var(--card);
+
+backdrop-filter:blur(15px);
+
+border-radius:30px;
+
+padding:25px;
+
+margin-bottom:20px;
+
+box-shadow:
+
+0 20px 45px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+/* INPUTS */
+
+
+input,
+textarea{
+
+width:100%;
+
+border:none;
+
+outline:none;
+
+padding:15px;
+
+border-radius:18px;
+
+background:#f8f3f8;
+
+font-size:15px;
+
+margin-top:12px;
+
+}
+
+
+
+textarea{
+
+height:130px;
+
+resize:none;
+
+}
+
+
+
+
+
+/* BUTTONS */
+
+
+button{
+
+width:100%;
+
+border:none;
+
+padding:16px;
+
+border-radius:18px;
+
+margin-top:12px;
+
+background:var(--text);
+
+color:white;
+
+font-weight:700;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+
+
+button:hover{
+
+transform:translateY(-2px);
+
+}
+
+
+
+button.secondary{
+
+background:white;
+
+color:var(--text);
+
+border:1px solid #ddd;
+
+}
+
+
+
+
+
+/* OPTIONS */
+
+
+.options{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+}
+
+
+
+.option{
+
+background:white;
+
+color:var(--text);
+
+border:1px solid #ddd;
+
+padding:14px;
+
+border-radius:16px;
+
+cursor:pointer;
+
+text-align:center;
+
+font-size:14px;
+
+}
+
+
+
+.option.selected{
+
+background:var(--text);
+
+color:white;
+
+}
+
+
+
+
+
+/* THEMES */
+
+
+.theme{
+
+height:65px;
+
+border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+padding-left:20px;
+
+font-weight:700;
+
+margin-top:12px;
+
+cursor:pointer;
+
+}
+
+
+
+
+
+/* AFFIRMATIONS */
+
+
+.affirmation{
+
+background:white;
+
+padding:20px;
+
+border-radius:20px;
+
+line-height:1.6;
+
+}
+
+
+
+
+/* NAVIGATION */
+
+
+nav{
+
+display:none;
+
+position:fixed;
+
+bottom:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:90%;
+
+max-width:430px;
+
+background:white;
+
+border-radius:30px;
+
+padding:10px;
+
+justify-content:space-around;
+
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+}
+
+
+
+nav button{
+
+background:none;
+
+color:var(--text);
+
+width:auto;
+
+margin:0;
+
+padding:10px;
+
+font-size:22px;
+
+}
+
+
+
+
+
+/* VISION BOARD */
+
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:10px;
+
+}
+
+
+
+.gallery img{
+
+width:100%;
+
+border-radius:18px;
+
+}
+
+
+
+
+
+</style>
 
 
 </head>
@@ -28,7 +477,9 @@
 <div class="app">
 
 
+
 <!-- WELCOME -->
+
 
 <section id="welcome" class="screen active">
 
@@ -44,16 +495,21 @@ Already Mine
 
 
 <p class="subtitle">
-Step into the version of your life you are creating.
-</p>
 
+Become the person you already believe you can be.
+
+</p>
 
 
 <div class="card">
 
+
 <button onclick="openScreen('signup')">
+
 ✨ Create Account
+
 </button>
+
 
 
 <button class="secondary"
@@ -73,7 +529,8 @@ Login
 
 
 
-<!-- SIGN UP -->
+
+<!-- SIGNUP -->
 
 
 <section id="signup" class="screen">
@@ -84,25 +541,20 @@ Create Account
 </h1>
 
 
-
 <div class="card">
 
 
-<input
-id="signupName"
+<input id="signupName"
 placeholder="Your name">
 
 
 
-<input
-id="signupEmail"
-type="email"
+<input id="signupEmail"
 placeholder="Email">
 
 
 
-<input
-id="signupPassword"
+<input id="signupPassword"
 type="password"
 placeholder="Password">
 
@@ -110,7 +562,7 @@ placeholder="Password">
 
 <button onclick="signup()">
 
-Create My Journey ✨
+Start My Journey ✨
 
 </button>
 
@@ -119,7 +571,6 @@ Create My Journey ✨
 
 
 </section>
-
 
 
 
@@ -136,20 +587,18 @@ Welcome Back
 </h1>
 
 
-
 <div class="card">
 
 
-<input
-id="loginEmail"
-type="email"
+<input id="loginEmail"
 placeholder="Email">
 
 
-<input
-id="loginPassword"
+
+<input id="loginPassword"
 type="password"
 placeholder="Password">
+
 
 
 <button onclick="login()">
@@ -164,16 +613,9 @@ Login
 
 </section>
 
+<!-- PERSONALISATION -->
 
-
-
-
-
-
-<!-- ONBOARDING -->
-
-
-<section id="onboarding" class="screen">
+<section id="personalisation" class="screen">
 
 
 <h1>
@@ -185,57 +627,71 @@ Personalise You 🌸
 
 
 <label>
-Your future self
+What is your name?
 </label>
 
 
-<textarea
-id="future"
-placeholder="Describe the person you are becoming...">
-</textarea>
+<input id="profileNameInput"
+placeholder="Your name">
+
+
 
 
 
 <label>
-Your goals
+Describe your future self ✨
 </label>
 
 
-<div class="choices">
+<textarea
+id="futureInput"
+placeholder="Example: I am confident, healthy, successful and peaceful...">
+</textarea>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
+
+
+
+<label>
+What are you calling into your life?
+</label>
+
+
+<div class="options">
+
+
+<button class="option"
+onclick="selectGoal(this)">
 💪 Fitness
 </button>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
+<button class="option"
+onclick="selectGoal(this)">
 🤍 Confidence
 </button>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
+<button class="option"
+onclick="selectGoal(this)">
 💰 Wealth
 </button>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
+<button class="option"
+onclick="selectGoal(this)">
 💍 Love
 </button>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
-✝ Faith
+<button class="option"
+onclick="selectGoal(this)">
+✝️ Faith
 </button>
 
 
-<button class="choice"
-onclick="chooseGoal(this)">
+<button class="option"
+onclick="selectGoal(this)">
 📚 Growth
 </button>
 
@@ -245,34 +701,36 @@ onclick="chooseGoal(this)">
 
 
 
-<label>
-Your energy
+
+<label style="display:block;margin-top:20px;">
+Choose your energy
 </label>
 
 
-<div class="choices">
+
+<div class="options">
 
 
-<button class="energy"
-onclick="chooseEnergy(this)">
+<button class="option"
+onclick="selectEnergy(this)">
 🤍 Soft
 </button>
 
 
-<button class="energy"
-onclick="chooseEnergy(this)">
+<button class="option"
+onclick="selectEnergy(this)">
 🔥 Powerful
 </button>
 
 
-<button class="energy"
-onclick="chooseEnergy(this)">
+<button class="option"
+onclick="selectEnergy(this)">
 👑 Luxury
 </button>
 
 
-<button class="energy"
-onclick="chooseEnergy(this)">
+<button class="option"
+onclick="selectEnergy(this)">
 🌙 Calm
 </button>
 
@@ -282,109 +740,149 @@ onclick="chooseEnergy(this)">
 
 
 
-<button onclick="saveProfile()">
+<button onclick="savePersonalisation()">
 
 Continue ✨
 
 </button>
 
 
+
 </div>
 
 
 </section>
-<!-- THEMES -->
+
+
+
+
+
+
+
+
+
+<!-- THEME PICKER -->
+
 
 <section id="themes" class="screen">
 
 
 <h1>
-Choose Your Style 🎨
+Choose Your Theme 🎨
 </h1>
+
 
 
 <div class="card">
 
 
 <p class="subtitle">
-Pick a colour that feels like your energy.
+Choose the colours that match your energy.
 </p>
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#ffd6e7,#d63384)"
-onclick="setTheme('#ffd6e7','#d63384')">
+onclick="changeTheme('#ffd6e7','#d63384')">
+
 🌸 Pink
+
 </div>
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#ffb3b3,#990000)"
-onclick="setTheme('#ffb3b3','#990000')">
+onclick="changeTheme('#ffb3b3','#990000')">
+
 ❤️ Red
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#d8f3dc,#2d6a4f)"
-onclick="setTheme('#d8f3dc','#2d6a4f')">
+onclick="changeTheme('#d8f3dc','#2d6a4f')">
+
 🌿 Green
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#caf0f8,#0077b6)"
-onclick="setTheme('#caf0f8','#0077b6')">
+onclick="changeTheme('#caf0f8','#0077b6')">
+
 🩵 Blue
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#e0c3fc,#6a0dad)"
-onclick="setTheme('#e0c3fc','#6a0dad')">
+onclick="changeTheme('#e0c3fc','#6a0dad')">
+
 💜 Purple
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#fff3b0,#cc9900)"
-onclick="setTheme('#fff3b0','#cc9900')">
+onclick="changeTheme('#fff3b0','#cc9900')">
+
 🌼 Yellow
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#ffd6a5,#e85d04)"
-onclick="setTheme('#ffd6a5','#e85d04')">
+onclick="changeTheme('#ffd6a5','#e85d04')">
+
 🧡 Orange
+
 </div>
+
 
 
 
 <div class="theme"
 style="background:linear-gradient(135deg,#eeeeee,#444444)"
-onclick="setTheme('#eeeeee','#444444')">
+onclick="changeTheme('#eeeeee','#444444')">
+
 🩶 Grey
+
 </div>
 
 
 
-<button onclick="finishTheme()">
-Start My Journey ✨
+
+
+<button onclick="finishSetup()">
+
+Enter My World ✨
+
 </button>
+
 
 
 </div>
 
 
 </section>
+
 
 
 
@@ -400,8 +898,9 @@ Start My Journey ✨
 
 
 <h1>
-Hello <span id="userName"></span> ✨
+Welcome <span id="homeName"></span> ✨
 </h1>
+
 
 
 <div class="card">
@@ -412,15 +911,15 @@ Today's Affirmation
 </h2>
 
 
-<div id="affirmation"
-class="affirmation">
 
-Loading...
+<div id="dailyAffirmation"
+class="affirmation">
 
 </div>
 
 
-<button onclick="generateAffirmation()">
+
+<button onclick="newAffirmation()">
 
 ✨ New Affirmation
 
@@ -428,15 +927,8 @@ Loading...
 
 
 
-<button class="secondary"
-onclick="saveAffirmation()">
-
-❤️ Save
-
-</button>
-
-
 </div>
+
 
 
 
@@ -450,14 +942,14 @@ Your Vision
 </h2>
 
 
-<p id="userVision"></p>
+<p id="futureDisplay"></p>
 
 
 </div>
 
 
-</section>
 
+</section>
 
 
 
@@ -477,18 +969,19 @@ Vision Board 🖼
 </h1>
 
 
-
 <div class="card">
 
 
-<input
-type="file"
+<input type="file"
 accept="image/*"
-onchange="uploadImage(event)">
+onchange="addVisionImage(event)">
 
 
 
-<div id="visionGallery"></div>
+<div class="gallery"
+id="visionGallery">
+
+</div>
 
 
 </div>
@@ -515,12 +1008,13 @@ Journal 📖
 </h1>
 
 
+
 <div class="card">
 
 
 <textarea
-id="journalInput"
-placeholder="Write your thoughts...">
+id="journalText"
+placeholder="Write your thoughts here...">
 </textarea>
 
 
@@ -532,14 +1026,15 @@ Save Entry
 </button>
 
 
+<div id="entries"></div>
 
-<div id="journalEntries"></div>
 
 
 </div>
 
 
 </section>
+
 
 
 
@@ -559,24 +1054,15 @@ Profile 👤
 </h1>
 
 
-
 <div class="card">
 
 
-<h2 id="profileName"></h2>
+<h2 id="profileDisplayName"></h2>
 
-
-<p>
-Goals:
-</p>
 
 
 <p id="profileGoals"></p>
 
-
-<p>
-Energy:
-</p>
 
 
 <p id="profileEnergy"></p>
@@ -602,10 +1088,10 @@ Logout
 
 
 
-<!-- NAVIGATION -->
+<!-- APP NAVIGATION -->
 
 
-<nav>
+<nav id="navigation">
 
 
 <button onclick="openScreen('home')">
@@ -629,27 +1115,955 @@ Logout
 
 
 </nav>
-</div>
-
-
-<script src="supabase.js"></script>
-
-<script src="app.js"></script>
-
 
 <script>
 
 
-if("serviceWorker" in navigator){
+// ==========================
+// SETTINGS
+// ==========================
 
-navigator.serviceWorker.register(
-"service-worker.js"
+
+const SUPABASE_URL =
+"https://tbxcyubmbctemhwpvmlq.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_so9RHJj4KPo3JkkOpOO_WQ_I0sgiFZf";
+
+
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
 );
+
+
+
+let goals = [];
+
+let energy = "";
+
+let chosenTheme = {};
+
+
+
+
+
+// ==========================
+// SCREEN CONTROL
+// ==========================
+
+
+function openScreen(id){
+
+
+document
+.querySelectorAll(".screen")
+.forEach(screen=>{
+
+screen.classList.remove("active");
+
+});
+
+
+
+document
+.getElementById(id)
+.classList.add("active");
+
+
+window.scrollTo(0,0);
+
 
 }
 
 
+
+
+
+
+
+
+// ==========================
+// SIGN UP
+// ==========================
+
+
+async function signup(){
+
+
+let name =
+document.getElementById("signupName").value;
+
+
+let email =
+document.getElementById("signupEmail").value;
+
+
+let password =
+document.getElementById("signupPassword").value;
+
+
+
+if(!name || !email || !password){
+
+alert(
+"Please complete everything ✨"
+);
+
+return;
+
+}
+
+
+
+const {
+data,
+error
+}
+=
+await supabaseClient.auth.signUp({
+
+email,
+
+password
+
+});
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+
+await supabaseClient
+.from("profiles")
+.insert({
+
+id:data.user.id,
+
+name:name,
+
+goals:[],
+
+energy:"",
+
+future:""
+
+});
+
+
+
+openScreen(
+"personalisation"
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// LOGIN
+// ==========================
+
+
+async function login(){
+
+
+let email =
+document.getElementById("loginEmail").value;
+
+
+let password =
+document.getElementById("loginPassword").value;
+
+
+
+const {
+data,
+error
+}
+=
+await supabaseClient.auth.signInWithPassword({
+
+email,
+
+password
+
+});
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+checkProfile();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// PERSONALISATION
+// ==========================
+
+
+
+function selectGoal(button){
+
+
+button.classList.toggle(
+"selected"
+);
+
+
+
+let value =
+button.innerText;
+
+
+
+if(goals.includes(value)){
+
+
+goals =
+goals.filter(
+item=>item !== value
+);
+
+
+}
+
+else{
+
+
+goals.push(value);
+
+
+}
+
+
+}
+
+
+
+
+
+
+function selectEnergy(button){
+
+
+document
+.querySelectorAll(".option")
+.forEach(btn=>{
+
+
+if(
+btn.innerText.includes("Soft") ||
+btn.innerText.includes("Powerful") ||
+btn.innerText.includes("Luxury") ||
+btn.innerText.includes("Calm")
+){
+
+btn.classList.remove("selected");
+
+}
+
+
+});
+
+
+
+button.classList.add("selected");
+
+energy =
+button.innerText;
+
+
+}
+
+
+
+
+
+
+
+async function savePersonalisation(){
+
+
+const {
+
+data:{
+user
+
+}
+
+}
+=
+await supabaseClient.auth.getUser();
+
+
+
+await supabaseClient
+
+.from("profiles")
+
+.update({
+
+name:
+document.getElementById(
+"profileNameInput"
+).value,
+
+
+goals,
+
+
+energy,
+
+
+future:
+document.getElementById(
+"futureInput"
+).value
+
+
+})
+
+
+.eq(
+"id",
+user.id
+);
+
+
+
+openScreen(
+"themes"
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// THEMES
+// ==========================
+
+
+function changeTheme(light,dark){
+
+
+document.documentElement
+.style.setProperty(
+"--light",
+light
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--dark",
+dark
+);
+
+
+
+chosenTheme={
+
+light,
+
+dark
+
+};
+
+
+
+}
+
+
+
+
+
+
+async function finishSetup(){
+
+
+localStorage.setItem(
+"theme",
+JSON.stringify(chosenTheme)
+);
+
+
+
+document
+.getElementById(
+"navigation"
+)
+.style.display="flex";
+
+
+
+loadUser();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// LOAD USER
+// ==========================
+
+
+async function loadUser(){
+
+
+const {
+
+data:{
+user
+
+}
+
+}
+=
+await supabaseClient.auth.getUser();
+
+
+
+if(!user)return;
+
+
+
+
+const {
+
+data
+
+}
+=
+await supabaseClient
+
+.from("profiles")
+
+.select("*")
+
+.eq(
+"id",
+user.id
+)
+
+.single();
+
+
+
+
+document
+.getElementById(
+"homeName"
+)
+.innerText =
+data.name;
+
+
+
+
+document
+.getElementById(
+"profileDisplayName"
+)
+.innerText =
+data.name;
+
+
+
+document
+.getElementById(
+"profileGoals"
+)
+.innerText =
+"Goals: " +
+data.goals.join(", ");
+
+
+
+document
+.getElementById(
+"profileEnergy"
+)
+.innerText =
+"Energy: " +
+data.energy;
+
+
+
+
+document
+.getElementById(
+"futureDisplay"
+)
+.innerText =
+data.future;
+
+
+
+openScreen(
+"home"
+);
+
+
+
+newAffirmation();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// CHECK LOGIN
+// ==========================
+
+
+async function checkProfile(){
+
+
+const {
+
+data:{
+user
+
+}
+
+}
+=
+await supabaseClient.auth.getUser();
+
+
+
+if(!user)return;
+
+
+
+const {
+
+data
+
+}
+=
+await supabaseClient
+
+.from("profiles")
+
+.select("*")
+
+.eq(
+"id",
+user.id
+)
+
+.single();
+
+
+
+if(
+data.future &&
+data.goals.length
+){
+
+
+document
+.getElementById(
+"navigation"
+)
+.style.display="flex";
+
+
+loadUser();
+
+
+}
+
+else{
+
+
+openScreen(
+"personalisation"
+);
+
+
+}
+
+
+}
+
+
+
+// ==========================
+// AFFIRMATIONS
+// ==========================
+
+
+function newAffirmation(){
+
+
+let messages = [
+
+
+"I am becoming the person I always dreamed of becoming ✨",
+
+
+"I trust my journey and everything I am creating.",
+
+
+"I am confident, disciplined and worthy of my goals.",
+
+
+"My future self is created by the choices I make today.",
+
+
+"I attract opportunities that align with my purpose.",
+
+
+"I am allowed to grow, change and become more.",
+
+
+"I am proud of the progress I am making."
+
+
+];
+
+
+
+let random =
+
+messages[
+Math.floor(
+Math.random()
+*
+messages.length
+)
+];
+
+
+
+document
+.getElementById(
+"dailyAffirmation"
+)
+.innerText=random;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// JOURNAL
+// ==========================
+
+
+async function saveJournal(){
+
+
+const {
+
+data:{
+user
+
+}
+
+}
+=
+await supabaseClient.auth.getUser();
+
+
+
+let text =
+document
+.getElementById(
+"journalText"
+)
+.value;
+
+
+
+if(!text){
+
+return;
+
+}
+
+
+
+await supabaseClient
+
+.from("journals")
+
+.insert({
+
+user_id:user.id,
+
+content:text
+
+});
+
+
+
+document
+.getElementById(
+"journalText"
+)
+.value="";
+
+
+
+alert(
+"Journal saved 📖"
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// VISION BOARD
+// ==========================
+
+
+function addVisionImage(event){
+
+
+let file =
+event.target.files[0];
+
+
+
+let reader =
+new FileReader();
+
+
+
+reader.onload=function(e){
+
+
+
+let img =
+document.createElement(
+"img"
+);
+
+
+
+img.src =
+e.target.result;
+
+
+
+document
+.getElementById(
+"visionGallery"
+)
+.appendChild(img);
+
+
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// LOGOUT
+// ==========================
+
+
+async function logout(){
+
+
+await supabaseClient
+.auth
+.signOut();
+
+
+
+location.reload();
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// START APP
+// ==========================
+
+
+window.onload =
+async function(){
+
+
+const savedTheme =
+localStorage.getItem(
+"theme"
+);
+
+
+
+if(savedTheme){
+
+
+let theme =
+JSON.parse(
+savedTheme
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--light",
+theme.light
+);
+
+
+
+document.documentElement
+.style.setProperty(
+"--dark",
+theme.dark
+);
+
+
+
+}
+
+
+
+
+const {
+
+data:{
+user
+
+}
+
+}
+=
+await supabaseClient.auth.getUser();
+
+
+
+if(user){
+
+
+checkProfile();
+
+
+}
+
+
+
+};
+
+
+
+
 </script>
+
+
+</div>
 
 
 </body>
