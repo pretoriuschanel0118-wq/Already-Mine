@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Already Mine ✨</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#d63384">
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<!-- WELCOME -->
+
+<section id="welcome" class="screen active">
+
+
+<div class="logo">
+✨
+</div>
+
+
+<h1>
+Already Mine
+</h1>
+
+
+<p class="subtitle">
+Step into the version of your life you are creating.
+</p>
+
+
+
+<div class="card">
+
+<button onclick="openScreen('signup')">
+✨ Create Account
+</button>
+
+
+<button class="secondary"
+onclick="openScreen('login')">
+
+Login
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- SIGN UP -->
+
+
+<section id="signup" class="screen">
+
+
+<h1>
+Create Account
+</h1>
+
+
+
+<div class="card">
+
+
+<input
+id="signupName"
+placeholder="Your name">
+
+
+
+<input
+id="signupEmail"
+type="email"
+placeholder="Email">
+
+
+
+<input
+id="signupPassword"
+type="password"
+placeholder="Password">
+
+
+
+<button onclick="signup()">
+
+Create My Journey ✨
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- LOGIN -->
+
+
+<section id="login" class="screen">
+
+
+<h1>
+Welcome Back
+</h1>
+
+
+
+<div class="card">
+
+
+<input
+id="loginEmail"
+type="email"
+placeholder="Email">
+
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password">
+
+
+<button onclick="login()">
+
+Login
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ONBOARDING -->
+
+
+<section id="onboarding" class="screen">
+
+
+<h1>
+Personalise You 🌸
+</h1>
+
+
+<div class="card">
+
+
+<label>
+Your future self
+</label>
+
+
+<textarea
+id="future"
+placeholder="Describe the person you are becoming...">
+</textarea>
+
+
+
+<label>
+Your goals
+</label>
+
+
+<div class="choices">
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+💪 Fitness
+</button>
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+🤍 Confidence
+</button>
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+💰 Wealth
+</button>
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+💍 Love
+</button>
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+✝ Faith
+</button>
+
+
+<button class="choice"
+onclick="chooseGoal(this)">
+📚 Growth
+</button>
+
+
+</div>
+
+
+
+
+<label>
+Your energy
+</label>
+
+
+<div class="choices">
+
+
+<button class="energy"
+onclick="chooseEnergy(this)">
+🤍 Soft
+</button>
+
+
+<button class="energy"
+onclick="chooseEnergy(this)">
+🔥 Powerful
+</button>
+
+
+<button class="energy"
+onclick="chooseEnergy(this)">
+👑 Luxury
+</button>
+
+
+<button class="energy"
+onclick="chooseEnergy(this)">
+🌙 Calm
+</button>
+
+
+</div>
+
+
+
+
+<button onclick="saveProfile()">
+
+Continue ✨
+
+</button>
+
+
+</div>
+
+
+</section>
+<!-- THEMES -->
+
+<section id="themes" class="screen">
+
+
+<h1>
+Choose Your Style 🎨
+</h1>
+
+
+<div class="card">
+
+
+<p class="subtitle">
+Pick a colour that feels like your energy.
+</p>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#ffd6e7,#d63384)"
+onclick="setTheme('#ffd6e7','#d63384')">
+🌸 Pink
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#ffb3b3,#990000)"
+onclick="setTheme('#ffb3b3','#990000')">
+❤️ Red
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#d8f3dc,#2d6a4f)"
+onclick="setTheme('#d8f3dc','#2d6a4f')">
+🌿 Green
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#caf0f8,#0077b6)"
+onclick="setTheme('#caf0f8','#0077b6')">
+🩵 Blue
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#e0c3fc,#6a0dad)"
+onclick="setTheme('#e0c3fc','#6a0dad')">
+💜 Purple
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#fff3b0,#cc9900)"
+onclick="setTheme('#fff3b0','#cc9900')">
+🌼 Yellow
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#ffd6a5,#e85d04)"
+onclick="setTheme('#ffd6a5','#e85d04')">
+🧡 Orange
+</div>
+
+
+
+<div class="theme"
+style="background:linear-gradient(135deg,#eeeeee,#444444)"
+onclick="setTheme('#eeeeee','#444444')">
+🩶 Grey
+</div>
+
+
+
+<button onclick="finishTheme()">
+Start My Journey ✨
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- HOME -->
+
+
+<section id="home" class="screen">
+
+
+<h1>
+Hello <span id="userName"></span> ✨
+</h1>
+
+
+<div class="card">
+
+
+<h2>
+Today's Affirmation
+</h2>
+
+
+<div id="affirmation"
+class="affirmation">
+
+Loading...
+
+</div>
+
+
+<button onclick="generateAffirmation()">
+
+✨ New Affirmation
+
+</button>
+
+
+
+<button class="secondary"
+onclick="saveAffirmation()">
+
+❤️ Save
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>
+Your Vision
+</h2>
+
+
+<p id="userVision"></p>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- VISION BOARD -->
+
+
+<section id="vision" class="screen">
+
+
+<h1>
+Vision Board 🖼
+</h1>
+
+
+
+<div class="card">
+
+
+<input
+type="file"
+accept="image/*"
+onchange="uploadImage(event)">
+
+
+
+<div id="visionGallery"></div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- JOURNAL -->
+
+
+<section id="journal" class="screen">
+
+
+<h1>
+Journal 📖
+</h1>
+
+
+<div class="card">
+
+
+<textarea
+id="journalInput"
+placeholder="Write your thoughts...">
+</textarea>
+
+
+
+<button onclick="saveJournal()">
+
+Save Entry
+
+</button>
+
+
+
+<div id="journalEntries"></div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PROFILE -->
+
+
+<section id="profile" class="screen">
+
+
+<h1>
+Profile 👤
+</h1>
+
+
+
+<div class="card">
+
+
+<h2 id="profileName"></h2>
+
+
+<p>
+Goals:
+</p>
+
+
+<p id="profileGoals"></p>
+
+
+<p>
+Energy:
+</p>
+
+
+<p id="profileEnergy"></p>
+
+
+
+<button onclick="logout()">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- NAVIGATION -->
+
+
+<nav>
+
+
+<button onclick="openScreen('home')">
+🏠
+</button>
+
+
+<button onclick="openScreen('vision')">
+🖼
+</button>
+
+
+<button onclick="openScreen('journal')">
+📖
+</button>
+
+
+<button onclick="openScreen('profile')">
+👤
+</button>
+
+
+</nav>
+</div>
+
+
+<script src="supabase.js"></script>
+
+<script src="app.js"></script>
+
+
+<script>
+
+
+if("serviceWorker" in navigator){
+
+navigator.serviceWorker.register(
+"service-worker.js"
+);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
