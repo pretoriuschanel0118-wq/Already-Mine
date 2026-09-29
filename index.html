@@ -18,7 +18,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-
 <style>
 
 
@@ -30,7 +29,6 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 
-
 :root{
 
 --light:#ffd6e7;
@@ -39,7 +37,6 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 --card:rgba(255,255,255,.85);
 
 }
-
 
 
 body{
@@ -66,16 +63,12 @@ transition:.5s;
 }
 
 
-
 .app{
 
 width:100%;
-
 max-width:430px;
 
 }
-
-
 
 
 
@@ -91,7 +84,6 @@ animation:fade .4s ease;
 }
 
 
-
 .screen.active{
 
 display:block;
@@ -105,7 +97,6 @@ display:block;
 from{
 
 opacity:0;
-
 transform:translateY(20px);
 
 }
@@ -113,7 +104,6 @@ transform:translateY(20px);
 to{
 
 opacity:1;
-
 transform:translateY(0);
 
 }
@@ -123,32 +113,18 @@ transform:translateY(0);
 
 
 
-
-/* HEADER */
-
-
-.logo{
-
-font-size:80px;
-
-text-align:center;
-
-margin-top:30px;
-
-}
-
+/* TEXT */
 
 
 h1{
 
-font-size:38px;
-
 text-align:center;
 
-margin:20px 0;
+font-size:38px;
+
+margin:25px 0;
 
 }
-
 
 
 h2{
@@ -156,7 +132,6 @@ h2{
 margin-bottom:15px;
 
 }
-
 
 
 .subtitle{
@@ -167,7 +142,7 @@ line-height:1.6;
 
 color:#756878;
 
-margin-bottom:30px;
+margin-bottom:25px;
 
 }
 
@@ -191,8 +166,21 @@ padding:25px;
 margin-bottom:20px;
 
 box-shadow:
-
 0 20px 45px rgba(0,0,0,.12);
+
+}
+
+
+
+
+
+.logo{
+
+font-size:80px;
+
+text-align:center;
+
+margin-top:40px;
 
 }
 
@@ -212,18 +200,17 @@ border:none;
 
 outline:none;
 
+background:#f8f3f8;
+
 padding:15px;
 
 border-radius:18px;
-
-background:#f8f3f8;
 
 font-size:15px;
 
 margin-top:12px;
 
 }
-
 
 
 textarea{
@@ -247,34 +234,23 @@ width:100%;
 
 border:none;
 
+background:var(--text);
+
+color:white;
+
 padding:16px;
 
 border-radius:18px;
 
 margin-top:12px;
 
-background:var(--text);
-
-color:white;
+font-size:16px;
 
 font-weight:700;
 
-font-size:16px;
-
 cursor:pointer;
 
-transition:.2s;
-
 }
-
-
-
-button:hover{
-
-transform:translateY(-2px);
-
-}
-
 
 
 button.secondary{
@@ -302,8 +278,9 @@ grid-template-columns:1fr 1fr;
 
 gap:10px;
 
-}
+margin-top:15px;
 
+}
 
 
 .option{
@@ -318,14 +295,9 @@ padding:14px;
 
 border-radius:16px;
 
-cursor:pointer;
-
-text-align:center;
-
 font-size:14px;
 
 }
-
 
 
 .option.selected{
@@ -355,7 +327,7 @@ align-items:center;
 
 padding-left:20px;
 
-font-weight:700;
+font-weight:bold;
 
 margin-top:12px;
 
@@ -385,7 +357,8 @@ line-height:1.6;
 
 
 
-/* NAVIGATION */
+
+/* NAV */
 
 
 nav{
@@ -417,12 +390,13 @@ box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
 
-
 nav button{
 
 background:none;
 
 color:var(--text);
+
+font-size:22px;
 
 width:auto;
 
@@ -430,15 +404,10 @@ margin:0;
 
 padding:10px;
 
-font-size:22px;
-
 }
 
 
 
-
-
-/* VISION BOARD */
 
 
 .gallery{
@@ -452,7 +421,6 @@ gap:10px;
 }
 
 
-
 .gallery img{
 
 width:100%;
@@ -463,10 +431,7 @@ border-radius:18px;
 
 
 
-
-
 </style>
-
 
 </head>
 
@@ -478,7 +443,7 @@ border-radius:18px;
 
 
 
-<!-- WELCOME -->
+<!-- WELCOME SCREEN -->
 
 
 <section id="welcome" class="screen active">
@@ -496,9 +461,10 @@ Already Mine
 
 <p class="subtitle">
 
-Become the person you already believe you can be.
+Step into the version of yourself you are becoming.
 
 </p>
+
 
 
 <div class="card">
@@ -511,13 +477,13 @@ Become the person you already believe you can be.
 </button>
 
 
-
 <button class="secondary"
 onclick="openScreen('login')">
 
 Login
 
 </button>
+
 
 
 </div>
@@ -530,7 +496,7 @@ Login
 
 
 
-<!-- SIGNUP -->
+<!-- SIGN UP -->
 
 
 <section id="signup" class="screen">
@@ -544,17 +510,20 @@ Create Account
 <div class="card">
 
 
-<input id="signupName"
+<input 
+id="signupName"
 placeholder="Your name">
 
 
 
-<input id="signupEmail"
+<input
+id="signupEmail"
 placeholder="Email">
 
 
 
-<input id="signupPassword"
+<input
+id="signupPassword"
 type="password"
 placeholder="Password">
 
@@ -576,6 +545,7 @@ Start My Journey ✨
 
 
 
+
 <!-- LOGIN -->
 
 
@@ -590,12 +560,14 @@ Welcome Back
 <div class="card">
 
 
-<input id="loginEmail"
+<input
+id="loginEmail"
 placeholder="Email">
 
 
 
-<input id="loginPassword"
+<input
+id="loginPassword"
 type="password"
 placeholder="Password">
 
@@ -608,12 +580,13 @@ Login
 </button>
 
 
+
 </div>
 
 
 </section>
-
 <!-- PERSONALISATION -->
+
 
 <section id="personalisation" class="screen">
 
@@ -627,34 +600,33 @@ Personalise You 🌸
 
 
 <label>
-What is your name?
+Your name
 </label>
 
 
-<input id="profileNameInput"
-placeholder="Your name">
+<input
+id="profileNameInput"
+placeholder="What should we call you?">
 
 
 
-
-
-<label>
-Describe your future self ✨
+<label style="display:block;margin-top:20px;">
+Your future self ✨
 </label>
 
 
 <textarea
 id="futureInput"
-placeholder="Example: I am confident, healthy, successful and peaceful...">
+placeholder="Describe the person you are becoming...">
 </textarea>
 
 
 
 
-
-<label>
+<label style="display:block;margin-top:20px;">
 What are you calling into your life?
 </label>
+
 
 
 <div class="options">
@@ -703,7 +675,7 @@ onclick="selectGoal(this)">
 
 
 <label style="display:block;margin-top:20px;">
-Choose your energy
+Your energy
 </label>
 
 
@@ -760,8 +732,7 @@ Continue ✨
 
 
 
-
-<!-- THEME PICKER -->
+<!-- THEMES -->
 
 
 <section id="themes" class="screen">
@@ -776,9 +747,11 @@ Choose Your Theme 🎨
 <div class="card">
 
 
+
 <p class="subtitle">
-Choose the colours that match your energy.
+Pick the colours that represent you.
 </p>
+
 
 
 
@@ -792,6 +765,7 @@ onclick="changeTheme('#ffd6e7','#d63384')">
 
 
 
+
 <div class="theme"
 style="background:linear-gradient(135deg,#ffb3b3,#990000)"
 onclick="changeTheme('#ffb3b3','#990000')">
@@ -799,6 +773,7 @@ onclick="changeTheme('#ffb3b3','#990000')">
 ❤️ Red
 
 </div>
+
 
 
 
@@ -814,6 +789,7 @@ onclick="changeTheme('#d8f3dc','#2d6a4f')">
 
 
 
+
 <div class="theme"
 style="background:linear-gradient(135deg,#caf0f8,#0077b6)"
 onclick="changeTheme('#caf0f8','#0077b6')">
@@ -821,6 +797,7 @@ onclick="changeTheme('#caf0f8','#0077b6')">
 🩵 Blue
 
 </div>
+
 
 
 
@@ -836,6 +813,7 @@ onclick="changeTheme('#e0c3fc','#6a0dad')">
 
 
 
+
 <div class="theme"
 style="background:linear-gradient(135deg,#fff3b0,#cc9900)"
 onclick="changeTheme('#fff3b0','#cc9900')">
@@ -843,6 +821,7 @@ onclick="changeTheme('#fff3b0','#cc9900')">
 🌼 Yellow
 
 </div>
+
 
 
 
@@ -858,6 +837,7 @@ onclick="changeTheme('#ffd6a5','#e85d04')">
 
 
 
+
 <div class="theme"
 style="background:linear-gradient(135deg,#eeeeee,#444444)"
 onclick="changeTheme('#eeeeee','#444444')">
@@ -865,6 +845,7 @@ onclick="changeTheme('#eeeeee','#444444')">
 🩶 Grey
 
 </div>
+
 
 
 
@@ -911,7 +892,6 @@ Today's Affirmation
 </h2>
 
 
-
 <div id="dailyAffirmation"
 class="affirmation">
 
@@ -928,7 +908,6 @@ class="affirmation">
 
 
 </div>
-
 
 
 
@@ -958,6 +937,7 @@ Your Vision
 
 
 
+
 <!-- VISION BOARD -->
 
 
@@ -972,7 +952,8 @@ Vision Board 🖼
 <div class="card">
 
 
-<input type="file"
+<input
+type="file"
 accept="image/*"
 onchange="addVisionImage(event)">
 
@@ -1008,13 +989,12 @@ Journal 📖
 </h1>
 
 
-
 <div class="card">
 
 
 <textarea
 id="journalText"
-placeholder="Write your thoughts here...">
+placeholder="Write your thoughts...">
 </textarea>
 
 
@@ -1026,6 +1006,7 @@ Save Entry
 </button>
 
 
+
 <div id="entries"></div>
 
 
@@ -1034,7 +1015,6 @@ Save Entry
 
 
 </section>
-
 
 
 
@@ -1054,15 +1034,14 @@ Profile 👤
 </h1>
 
 
+
 <div class="card">
 
 
 <h2 id="profileDisplayName"></h2>
 
 
-
 <p id="profileGoals"></p>
-
 
 
 <p id="profileEnergy"></p>
@@ -1074,6 +1053,7 @@ Profile 👤
 Logout
 
 </button>
+
 
 
 </div>
@@ -1088,7 +1068,7 @@ Logout
 
 
 
-<!-- APP NAVIGATION -->
+<!-- NAVIGATION -->
 
 
 <nav id="navigation">
@@ -1115,12 +1095,11 @@ Logout
 
 
 </nav>
-
 <script>
 
 
 // ==========================
-// SETTINGS
+// SUPABASE CONNECTION
 // ==========================
 
 
@@ -1132,12 +1111,13 @@ const SUPABASE_KEY =
 "sb_publishable_so9RHJj4KPo3JkkOpOO_WQ_I0sgiFZf";
 
 
-
 const supabaseClient =
 supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
+
+
 
 
 
@@ -1151,8 +1131,11 @@ let chosenTheme = {};
 
 
 
+
+
+
 // ==========================
-// SCREEN CONTROL
+// SCREEN CHANGER
 // ==========================
 
 
@@ -1174,7 +1157,14 @@ document
 .classList.add("active");
 
 
-window.scrollTo(0,0);
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
 
 
 }
@@ -1186,8 +1176,9 @@ window.scrollTo(0,0);
 
 
 
+
 // ==========================
-// SIGN UP
+// SIGN UP (FIXED)
 // ==========================
 
 
@@ -1219,18 +1210,25 @@ return;
 
 
 
+
 const {
+
 data,
+
 error
+
 }
+
 =
 await supabaseClient.auth.signUp({
 
-email,
+email:email,
 
-password
+password:password
 
 });
+
+
 
 
 
@@ -1245,8 +1243,31 @@ return;
 
 
 
+
+if(!data.user){
+
+alert(
+"Please disable email confirmation in Supabase Authentication settings."
+);
+
+return;
+
+}
+
+
+
+
+
+
+const {
+error:profileError
+}
+
+=
 await supabaseClient
+
 .from("profiles")
+
 .insert({
 
 id:data.user.id,
@@ -1263,6 +1284,21 @@ future:""
 
 
 
+
+
+
+if(profileError){
+
+alert(profileError.message);
+
+return;
+
+}
+
+
+
+
+
 openScreen(
 "personalisation"
 );
@@ -1270,6 +1306,7 @@ openScreen(
 
 
 }
+
 
 
 
@@ -1297,10 +1334,14 @@ document.getElementById("loginPassword").value;
 
 
 
+
+
 const {
-data,
+
 error
+
 }
+
 =
 await supabaseClient.auth.signInWithPassword({
 
@@ -1312,6 +1353,8 @@ password
 
 
 
+
+
 if(error){
 
 alert(error.message);
@@ -1319,6 +1362,8 @@ alert(error.message);
 return;
 
 }
+
+
 
 
 
@@ -1337,10 +1382,11 @@ checkProfile();
 
 
 
-// ==========================
-// PERSONALISATION
-// ==========================
 
+
+// ==========================
+// GOAL SELECT
+// ==========================
 
 
 function selectGoal(button){
@@ -1366,6 +1412,7 @@ item=>item !== value
 );
 
 
+
 }
 
 else{
@@ -1377,6 +1424,7 @@ goals.push(value);
 }
 
 
+
 }
 
 
@@ -1384,7 +1432,16 @@ goals.push(value);
 
 
 
+
+
+
+// ==========================
+// ENERGY SELECT
+// ==========================
+
+
 function selectEnergy(button){
+
 
 
 document
@@ -1393,25 +1450,42 @@ document
 
 
 if(
+
 btn.innerText.includes("Soft") ||
+
 btn.innerText.includes("Powerful") ||
+
 btn.innerText.includes("Luxury") ||
+
 btn.innerText.includes("Calm")
+
 ){
 
-btn.classList.remove("selected");
+
+btn.classList.remove(
+"selected"
+);
+
 
 }
+
 
 
 });
 
 
 
-button.classList.add("selected");
+
+
+button.classList.add(
+"selected"
+);
+
+
 
 energy =
 button.innerText;
+
 
 
 }
@@ -1422,7 +1496,18 @@ button.innerText;
 
 
 
+
+
+
+
+
+// ==========================
+// SAVE PERSONALISATION (FIXED)
+// ==========================
+
+
 async function savePersonalisation(){
+
 
 
 const {
@@ -1433,49 +1518,63 @@ user
 }
 
 }
+
 =
 await supabaseClient.auth.getUser();
 
 
 
-await supabaseClient
 
-.from("profiles")
 
-.update({
+if(!user){
 
-name:
+alert(
+"Please login again ✨"
+);
+
+openScreen("login");
+
+return;
+
+}
+
+
+
+
+
+let name =
 document.getElementById(
 "profileNameInput"
-).value,
+).value;
 
 
-goals,
 
-
-energy,
-
-
-future:
+let future =
 document.getElementById(
 "futureInput"
-).value
+).value;
 
 
-})
 
 
-.eq(
-"id",
-user.id
+
+if(
+
+!name ||
+
+!future ||
+
+goals.length===0 ||
+
+!energy
+
+){
+
+alert(
+"Please complete your personalisation ✨"
 );
 
-
-
-openScreen(
-"themes"
-);
-
+return;
 
 }
 
@@ -1484,7 +1583,60 @@ openScreen(
 
 
 
+const {
 
+error
+
+}
+
+=
+await supabaseClient
+
+.from("profiles")
+
+.update({
+
+name:name,
+
+goals:goals,
+
+energy:energy,
+
+future:future
+
+})
+
+.eq(
+
+"id",
+
+user.id
+
+);
+
+
+
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+
+
+openScreen(
+"themes"
+);
+
+
+
+}
 
 
 // ==========================
@@ -1502,7 +1654,6 @@ light
 );
 
 
-
 document.documentElement
 .style.setProperty(
 "--dark",
@@ -1511,11 +1662,11 @@ dark
 
 
 
-chosenTheme={
+chosenTheme = {
 
-light,
+light:light,
 
-dark
+dark:dark
 
 };
 
@@ -1528,12 +1679,18 @@ dark
 
 
 
+
+
 async function finishSetup(){
 
 
+
 localStorage.setItem(
+
 "theme",
+
 JSON.stringify(chosenTheme)
+
 );
 
 
@@ -1549,8 +1706,8 @@ document
 loadUser();
 
 
-}
 
+}
 
 
 
@@ -1568,6 +1725,7 @@ loadUser();
 async function loadUser(){
 
 
+
 const {
 
 data:{
@@ -1581,16 +1739,26 @@ await supabaseClient.auth.getUser();
 
 
 
-if(!user)return;
+
+
+if(!user){
+
+return;
+
+}
+
 
 
 
 
 const {
 
-data
+data,
+
+error
 
 }
+
 =
 await supabaseClient
 
@@ -1608,12 +1776,29 @@ user.id
 
 
 
+
+
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+
+
+
+
+
+
 document
 .getElementById(
 "homeName"
 )
 .innerText =
 data.name;
+
 
 
 
@@ -1627,6 +1812,8 @@ data.name;
 
 
 
+
+
 document
 .getElementById(
 "profileGoals"
@@ -1634,6 +1821,8 @@ document
 .innerText =
 "Goals: " +
 data.goals.join(", ");
+
+
 
 
 
@@ -1648,12 +1837,15 @@ data.energy;
 
 
 
+
 document
 .getElementById(
 "futureDisplay"
 )
 .innerText =
 data.future;
+
+
 
 
 
@@ -1678,11 +1870,12 @@ newAffirmation();
 
 
 // ==========================
-// CHECK LOGIN
+// CHECK EXISTING USER
 // ==========================
 
 
 async function checkProfile(){
+
 
 
 const {
@@ -1698,7 +1891,19 @@ await supabaseClient.auth.getUser();
 
 
 
-if(!user)return;
+
+
+if(!user){
+
+openScreen("welcome");
+
+return;
+
+}
+
+
+
+
 
 
 
@@ -1707,6 +1912,7 @@ const {
 data
 
 }
+
 =
 await supabaseClient
 
@@ -1723,10 +1929,20 @@ user.id
 
 
 
+
+
+
+
 if(
+
+data &&
+
 data.future &&
-data.goals.length
+
+data.goals.length > 0
+
 ){
+
 
 
 document
@@ -1736,7 +1952,9 @@ document
 .style.display="flex";
 
 
+
 loadUser();
+
 
 
 }
@@ -1744,15 +1962,26 @@ loadUser();
 else{
 
 
+
 openScreen(
 "personalisation"
 );
 
 
+
 }
 
 
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -1764,51 +1993,143 @@ openScreen(
 function newAffirmation(){
 
 
-let messages = [
+
+let affirmations = [
+
 
 
 "I am becoming the person I always dreamed of becoming ✨",
 
 
-"I trust my journey and everything I am creating.",
+
+"I trust my journey and my growth.",
 
 
-"I am confident, disciplined and worthy of my goals.",
+
+"I am confident, disciplined and powerful.",
 
 
-"My future self is created by the choices I make today.",
+
+"I attract the life that matches my energy.",
 
 
-"I attract opportunities that align with my purpose.",
+
+"I am proud of the progress I make every day.",
 
 
-"I am allowed to grow, change and become more.",
+
+"My future self is created by my choices today.",
 
 
-"I am proud of the progress I am making."
+
+"I deserve good things and I allow myself to receive them."
+
 
 
 ];
 
 
 
-let random =
 
-messages[
+
+let result =
+
+affirmations[
+
 Math.floor(
+
 Math.random()
+
 *
-messages.length
+
+affirmations.length
+
 )
+
 ];
+
+
 
 
 
 document
+
 .getElementById(
 "dailyAffirmation"
 )
-.innerText=random;
+
+.innerText=result;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// VISION BOARD
+// ==========================
+
+
+function addVisionImage(event){
+
+
+
+let file =
+
+event.target.files[0];
+
+
+
+let reader =
+
+new FileReader();
+
+
+
+
+
+reader.onload=function(e){
+
+
+
+let img =
+
+document.createElement(
+"img"
+);
+
+
+
+img.src=e.target.result;
+
+
+
+
+
+document
+
+.getElementById(
+"visionGallery"
+)
+
+.appendChild(img);
+
+
+
+};
+
+
+
+
+
+reader.readAsDataURL(file);
 
 
 
@@ -1830,6 +2151,7 @@ document
 async function saveJournal(){
 
 
+
 const {
 
 data:{
@@ -1843,16 +2165,27 @@ await supabaseClient.auth.getUser();
 
 
 
+
+
 let text =
+
 document
+
 .getElementById(
 "journalText"
 )
+
 .value;
 
 
 
+
+
 if(!text){
+
+alert(
+"Write something first ✨"
+);
 
 return;
 
@@ -1860,6 +2193,17 @@ return;
 
 
 
+
+
+
+
+const {
+
+error
+
+}
+
+=
 await supabaseClient
 
 .from("journals")
@@ -1874,18 +2218,15 @@ content:text
 
 
 
-document
-.getElementById(
-"journalText"
-)
-.value="";
 
 
 
-alert(
-"Journal saved 📖"
-);
 
+if(error){
+
+alert(error.message);
+
+return;
 
 }
 
@@ -1894,57 +2235,20 @@ alert(
 
 
 
+document
+
+.getElementById(
+"journalText"
+)
+
+.value="";
 
 
 
-
-// ==========================
-// VISION BOARD
-// ==========================
-
-
-function addVisionImage(event){
-
-
-let file =
-event.target.files[0];
-
-
-
-let reader =
-new FileReader();
-
-
-
-reader.onload=function(e){
-
-
-
-let img =
-document.createElement(
-"img"
+alert(
+"Saved 📖"
 );
 
-
-
-img.src =
-e.target.result;
-
-
-
-document
-.getElementById(
-"visionGallery"
-)
-.appendChild(img);
-
-
-
-};
-
-
-
-reader.readAsDataURL(file);
 
 
 }
@@ -1965,17 +2269,16 @@ reader.readAsDataURL(file);
 async function logout(){
 
 
-await supabaseClient
-.auth
-.signOut();
+
+await supabaseClient.auth.signOut();
 
 
 
 location.reload();
 
 
-}
 
+}
 
 
 
@@ -1990,28 +2293,33 @@ location.reload();
 // ==========================
 
 
-window.onload =
-async function(){
+window.onload = async function(){
+
 
 
 const savedTheme =
+
 localStorage.getItem(
 "theme"
 );
 
 
 
+
+
 if(savedTheme){
 
 
+
 let theme =
-JSON.parse(
-savedTheme
-);
+
+JSON.parse(savedTheme);
+
 
 
 
 document.documentElement
+
 .style.setProperty(
 "--light",
 theme.light
@@ -2019,7 +2327,9 @@ theme.light
 
 
 
+
 document.documentElement
+
 .style.setProperty(
 "--dark",
 theme.dark
@@ -2028,6 +2338,9 @@ theme.dark
 
 
 }
+
+
+
 
 
 
@@ -2045,10 +2358,15 @@ await supabaseClient.auth.getUser();
 
 
 
+
+
+
 if(user){
 
 
+
 checkProfile();
+
 
 
 }
@@ -2057,6 +2375,25 @@ checkProfile();
 
 };
 
+
+// ==========================
+// PWA SERVICE WORKER
+// ==========================
+
+
+if("serviceWorker" in navigator){
+
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker.register(
+"service-worker.js"
+);
+
+});
+
+}
 
 
 
@@ -2068,4 +2405,6 @@ checkProfile();
 
 </body>
 
+
 </html>
+
