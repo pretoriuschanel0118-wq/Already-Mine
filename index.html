@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -6,6 +7,7 @@
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>Already Mine ✨</title>
 
@@ -18,37 +20,41 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
+
 <style>
 
 
 *{
+
 box-sizing:border-box;
+
 margin:0;
+
 padding:0;
+
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
 }
+
 
 
 :root{
 
 --light:#ffd6e7;
+
 --dark:#d63384;
+
 --text:#342b38;
---card:rgba(255,255,255,.88);
+
+--card:rgba(255,255,255,.9);
 
 }
+
 
 
 body{
 
 min-height:100vh;
-
-background:
-linear-gradient(
-135deg,
-var(--light),
-var(--dark)
-);
 
 display:flex;
 
@@ -56,9 +62,19 @@ justify-content:center;
 
 padding:20px;
 
-color:var(--text);
+background:
 
-transition:.5s;
+linear-gradient(
+
+135deg,
+
+var(--light),
+
+var(--dark)
+
+);
+
+color:var(--text);
 
 }
 
@@ -78,9 +94,10 @@ max-width:430px;
 
 display:none;
 
-animation:fade .4s ease;
+animation:fade .35s ease;
 
 }
+
 
 
 .screen.active{
@@ -97,7 +114,7 @@ from{
 
 opacity:0;
 
-transform:translateY(20px);
+transform:translateY(15px);
 
 }
 
@@ -113,11 +130,9 @@ transform:translateY(0);
 
 
 
-
-
 .logo{
 
-font-size:85px;
+font-size:90px;
 
 text-align:center;
 
@@ -151,9 +166,9 @@ margin-bottom:15px;
 
 text-align:center;
 
-color:#756878;
-
 line-height:1.6;
+
+color:#756878;
 
 margin-bottom:25px;
 
@@ -161,28 +176,21 @@ margin-bottom:25px;
 
 
 
-
-
 .card{
 
 background:var(--card);
 
-backdrop-filter:blur(15px);
+padding:25px;
 
 border-radius:30px;
-
-padding:25px;
 
 margin-bottom:20px;
 
 box-shadow:
 
-0 20px 45px rgba(0,0,0,.12);
+0 20px 40px rgba(0,0,0,.15);
 
 }
-
-
-
 
 
 
@@ -196,15 +204,15 @@ border:none;
 
 outline:none;
 
-background:#f8f3f8;
-
 padding:15px;
+
+margin-top:12px;
 
 border-radius:18px;
 
-font-size:15px;
+background:#f8f3f8;
 
-margin-top:12px;
+font-size:15px;
 
 }
 
@@ -220,41 +228,60 @@ resize:none;
 
 
 
+.password-box{
+
+position:relative;
+
+}
+
+
+
+.password-box button{
+
+
+position:absolute;
+
+right:8px;
+
+top:18px;
+
+width:auto;
+
+padding:8px 12px;
+
+margin:0;
+
+background:none;
+
+color:var(--text);
+
+font-size:16px;
+
+}
 
 
 
 button{
 
-
 width:100%;
 
+padding:16px;
+
+margin-top:12px;
+
 border:none;
+
+border-radius:18px;
 
 background:var(--text);
 
 color:white;
-
-padding:16px;
-
-border-radius:18px;
-
-margin-top:12px;
 
 font-size:16px;
 
 font-weight:700;
 
 cursor:pointer;
-
-transition:.2s;
-
-}
-
-
-
-button:hover{
-
-transform:translateY(-2px);
 
 }
 
@@ -272,158 +299,8 @@ border:1px solid #ddd;
 
 
 
-
-
-
-.options{
-
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:10px;
-
-margin-top:15px;
-
-}
-
-
-
-.option{
-
-
-background:white;
-
-color:var(--text);
-
-border:1px solid #ddd;
-
-padding:14px;
-
-border-radius:16px;
-
-font-size:14px;
-
-cursor:pointer;
-
-}
-
-
-
-.option.selected{
-
-
-background:var(--text);
-
-color:white;
-
-}
-
-
-
-
-
-
-.theme{
-
-
-height:65px;
-
-border-radius:20px;
-
-display:flex;
-
-align-items:center;
-
-padding-left:20px;
-
-font-weight:bold;
-
-margin-top:12px;
-
-cursor:pointer;
-
-}
-
-
-
-
-
-
-
-.affirmation{
-
-
-background:white;
-
-padding:20px;
-
-border-radius:20px;
-
-line-height:1.7;
-
-font-size:16px;
-
-}
-
-
-
-
-
-nav{
-
-
-display:none;
-
-position:fixed;
-
-bottom:15px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-width:90%;
-
-max-width:430px;
-
-background:white;
-
-border-radius:30px;
-
-padding:10px;
-
-justify-content:space-around;
-
-box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-}
-
-
-
-nav button{
-
-
-background:none;
-
-color:var(--text);
-
-font-size:22px;
-
-width:auto;
-
-margin:0;
-
-padding:10px;
-
-}
-
-
-
-
-
 </style>
+
 
 </head>
 
@@ -436,7 +313,6 @@ padding:10px;
 
 
 <!-- WELCOME -->
-
 
 <section id="welcome" class="screen active">
 
@@ -453,6 +329,7 @@ padding:10px;
 Already Mine
 
 </h1>
+
 
 
 <p class="subtitle">
@@ -473,11 +350,13 @@ Become the person you already know you can be.
 </button>
 
 
+
 <button class="secondary" onclick="openScreen('login')">
 
 Login
 
 </button>
+
 
 
 </div>
@@ -491,8 +370,8 @@ Login
 
 
 
-<!-- SIGNUP -->
 
+<!-- SIGNUP -->
 
 <section id="signup" class="screen">
 
@@ -508,21 +387,53 @@ Create Account
 
 
 <input
+
 id="signupName"
+
 placeholder="Your name">
 
 
 
+
+
 <input
+
 id="signupEmail"
+
 placeholder="Email">
 
 
 
+
+
+
+<div class="password-box">
+
+
 <input
+
 id="signupPassword"
+
 type="password"
+
 placeholder="Password">
+
+
+
+<button
+
+type="button"
+
+onclick="togglePassword('signupPassword')">
+
+👁
+
+</button>
+
+
+</div>
+
+
 
 
 
@@ -545,8 +456,9 @@ Start My Journey ✨
 
 
 
-<!-- LOGIN -->
 
+
+<!-- LOGIN -->
 
 <section id="login" class="screen">
 
@@ -558,19 +470,47 @@ Welcome Back
 </h1>
 
 
+
 <div class="card">
 
 
 <input
+
 id="loginEmail"
+
 placeholder="Email">
 
 
 
+
+
+<div class="password-box">
+
+
 <input
+
 id="loginPassword"
+
 type="password"
+
 placeholder="Password">
+
+
+
+<button
+
+type="button"
+
+onclick="togglePassword('loginPassword')">
+
+👁
+
+</button>
+
+
+</div>
+
+
 
 
 
@@ -582,11 +522,13 @@ Login
 
 
 
+
 </div>
 
 
-<!-- PERSONALISATION -->
+</section>
 
+<!-- PERSONALISATION -->
 
 <section id="personalisation" class="screen">
 
@@ -594,6 +536,7 @@ Login
 <h1>
 Become Your Future Self ✨
 </h1>
+
 
 
 <div class="card">
@@ -613,13 +556,18 @@ placeholder="Your name">
 
 
 <label style="display:block;margin-top:20px;">
+
 Describe your future self 🌱
+
 </label>
 
 
 <textarea
+
 id="futureInput"
-placeholder="Example: I am confident, healthy, successful, peaceful and living my dream life...">
+
+placeholder="Example: I am confident, healthy, successful and living my dream life...">
+
 </textarea>
 
 
@@ -627,8 +575,11 @@ placeholder="Example: I am confident, healthy, successful, peaceful and living m
 
 
 
+
 <label style="display:block;margin-top:20px;">
+
 Choose your goals (minimum 3) ✨
+
 </label>
 
 
@@ -637,106 +588,77 @@ Choose your goals (minimum 3) ✨
 
 
 
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 💪 Health & Fitness
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 ✨ Confidence
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 💰 Wealth & Success
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 💼 Career
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 📚 Education & Growth
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 💍 Love & Relationships
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🏡 Dream Life
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 ✈️ Travel & Adventure
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 👑 Self-Worth
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🧘 Peace & Mental Strength
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🔥 Discipline & Habits
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🙏 Faith & Spiritual Growth
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🌱 Healing & Letting Go
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🎨 Creativity
 </button>
 
 
-
-<button class="option"
-onclick="selectGoal(this)">
+<button class="option" onclick="selectGoal(this)">
 🌟 Personal Transformation
 </button>
 
@@ -750,45 +672,43 @@ onclick="selectGoal(this)">
 
 
 
+
 <label style="display:block;margin-top:25px;">
-Choose your energy
+
+Choose your energy ✨
+
 </label>
+
 
 
 
 <div class="options">
 
 
-
-<button class="option"
-onclick="selectEnergy(this)">
+<button class="option" onclick="selectEnergy(this)">
 🤍 Soft & Gentle
 </button>
 
 
-
-<button class="option"
-onclick="selectEnergy(this)">
+<button class="option" onclick="selectEnergy(this)">
 🔥 Powerful
 </button>
 
 
-
-<button class="option"
-onclick="selectEnergy(this)">
-👑 Abundant & Luxury
+<button class="option" onclick="selectEnergy(this)">
+👑 Luxury & Abundant
 </button>
 
 
-
-<button class="option"
-onclick="selectEnergy(this)">
+<button class="option" onclick="selectEnergy(this)">
 🙏 Faith Filled
 </button>
 
 
 
 </div>
+
+
 
 
 
@@ -815,14 +735,14 @@ Continue ✨
 
 
 
-<!-- THEME SELECTION -->
+<!-- THEME PICKER -->
 
 
 <section id="themes" class="screen">
 
 
 <h1>
-Choose Your World 🎨
+Choose Your Energy 🎨
 </h1>
 
 
@@ -831,7 +751,9 @@ Choose Your World 🎨
 
 
 <p class="subtitle">
-Pick the colours that feel like you.
+
+Choose the colours that represent your journey.
+
 </p>
 
 
@@ -839,7 +761,9 @@ Pick the colours that feel like you.
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#ffd6e7,#d63384)"
+
 onclick="changeTheme('#ffd6e7','#d63384')">
 
 🌸 Pink
@@ -851,7 +775,9 @@ onclick="changeTheme('#ffd6e7','#d63384')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#ffb3b3,#990000)"
+
 onclick="changeTheme('#ffb3b3','#990000')">
 
 ❤️ Red
@@ -863,7 +789,9 @@ onclick="changeTheme('#ffb3b3','#990000')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#d8f3dc,#2d6a4f)"
+
 onclick="changeTheme('#d8f3dc','#2d6a4f')">
 
 🌿 Green
@@ -875,7 +803,9 @@ onclick="changeTheme('#d8f3dc','#2d6a4f')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#caf0f8,#0077b6)"
+
 onclick="changeTheme('#caf0f8','#0077b6')">
 
 🩵 Blue
@@ -887,7 +817,9 @@ onclick="changeTheme('#caf0f8','#0077b6')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#e0c3fc,#6a0dad)"
+
 onclick="changeTheme('#e0c3fc','#6a0dad')">
 
 💜 Purple
@@ -899,7 +831,9 @@ onclick="changeTheme('#e0c3fc','#6a0dad')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#fff3b0,#cc9900)"
+
 onclick="changeTheme('#fff3b0','#cc9900')">
 
 🌼 Yellow
@@ -911,7 +845,9 @@ onclick="changeTheme('#fff3b0','#cc9900')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#ffd6a5,#e85d04)"
+
 onclick="changeTheme('#ffd6a5','#e85d04')">
 
 🧡 Orange
@@ -923,7 +859,9 @@ onclick="changeTheme('#ffd6a5','#e85d04')">
 
 
 <div class="theme"
+
 style="background:linear-gradient(135deg,#eeeeee,#444444)"
+
 onclick="changeTheme('#eeeeee','#444444')">
 
 🩶 Grey
@@ -950,7 +888,6 @@ Enter My World ✨
 
 <!-- HOME -->
 
-
 <section id="home" class="screen">
 
 
@@ -971,7 +908,7 @@ Today's Affirmation 🌱
 
 <div id="dailyAffirmation" class="affirmation">
 
-Loading your affirmation...
+Creating your daily affirmation...
 
 </div>
 
@@ -992,6 +929,7 @@ Loading your affirmation...
 
 
 
+
 <div class="card">
 
 
@@ -1000,10 +938,13 @@ Your Future Self 🌟
 </h2>
 
 
+
 <p id="futureDisplay"></p>
 
 
+
 </div>
+
 
 
 
@@ -1018,11 +959,12 @@ Your Goals ✨
 </h2>
 
 
+
 <p id="goalsDisplay"></p>
 
 
-</div>
 
+</div>
 
 
 </section>
@@ -1037,7 +979,6 @@ Your Goals ✨
 
 <!-- VISION BOARD -->
 
-
 <section id="vision" class="screen">
 
 
@@ -1047,28 +988,38 @@ Vision Board 🖼
 
 
 
+
 <div class="card">
 
 
 <p class="subtitle">
 
-Upload images that represent the life you are creating.
+Upload images that represent your dream life.
 
 </p>
 
 
 
+
 <input
+
 type="file"
+
 accept="image/*"
+
 multiple
+
 onchange="addVisionImages(event)">
 
 
 
-<div id="visionGallery" class="gallery">
+
+
+
+<div id="visionGallery">
 
 </div>
+
 
 
 </div>
@@ -1096,13 +1047,19 @@ Journal 📖
 
 
 
+
+
 <div class="card">
 
 
 <textarea
+
 id="journalText"
-placeholder="Write your thoughts, gratitude or goals...">
+
+placeholder="Write your thoughts, gratitude, goals or reflections...">
+
 </textarea>
+
 
 
 
@@ -1118,6 +1075,7 @@ Save Entry ✨
 <div id="entries">
 
 </div>
+
 
 
 </div>
@@ -1145,12 +1103,16 @@ Profile 👑
 
 
 
+
+
 <div class="card">
+
 
 
 <h2 id="profileDisplayName">
 
 </h2>
+
 
 
 
@@ -1169,6 +1131,7 @@ Profile 👑
 <p id="profileFuture">
 
 </p>
+
 
 
 
@@ -1194,7 +1157,7 @@ Logout
 
 
 
-<!-- BOTTOM NAVIGATION -->
+<!-- NAVIGATION -->
 
 
 <nav id="navigation">
@@ -1207,11 +1170,13 @@ Logout
 </button>
 
 
+
 <button onclick="openScreen('vision')">
 
 🖼
 
 </button>
+
 
 
 <button onclick="openScreen('journal')">
@@ -1221,6 +1186,7 @@ Logout
 </button>
 
 
+
 <button onclick="openScreen('profile')">
 
 👤
@@ -1228,14 +1194,14 @@ Logout
 </button>
 
 
-</nav>
 
+</nav>
 
 <script>
 
 
 // ==========================
-// SUPABASE
+// SUPABASE CONNECTION
 // ==========================
 
 
@@ -1245,6 +1211,7 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
 "sb_publishable_so9RHJj4KPo3JkkOpOO_WQ_I0sgiFZf";
+
 
 
 const supabaseClient =
@@ -1278,7 +1245,7 @@ dark:"#d63384"
 
 
 // ==========================
-// SCREEN CONTROL
+// SCREEN CHANGE
 // ==========================
 
 
@@ -1289,7 +1256,9 @@ document
 .querySelectorAll(".screen")
 .forEach(screen=>{
 
+
 screen.classList.remove("active");
+
 
 });
 
@@ -1300,18 +1269,50 @@ document
 .classList.add("active");
 
 
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
+window.scrollTo(0,0);
 
 
 }
 
 
+
+
+
+
+
+
+
+// ==========================
+// PASSWORD SHOW/HIDE
+// ==========================
+
+
+function togglePassword(id){
+
+
+let input =
+document.getElementById(id);
+
+
+
+if(input.type === "password"){
+
+
+input.type="text";
+
+
+}
+
+else{
+
+
+input.type="password";
+
+
+}
+
+
+}
 
 
 
@@ -1329,12 +1330,15 @@ behavior:"smooth"
 async function signup(){
 
 
+
 let name =
-document.getElementById("signupName").value;
+document.getElementById("signupName").value.trim();
+
 
 
 let email =
-document.getElementById("signupEmail").value;
+document.getElementById("signupEmail").value.trim();
+
 
 
 let password =
@@ -1343,15 +1347,20 @@ document.getElementById("signupPassword").value;
 
 
 
+
 if(!name || !email || !password){
 
+
 alert(
-"Please complete all fields ✨"
+"Please complete everything ✨"
 );
+
 
 return;
 
+
 }
+
 
 
 
@@ -1368,9 +1377,26 @@ error
 =
 await supabaseClient.auth.signUp({
 
+
 email,
 
-password
+password,
+
+
+options:{
+
+
+data:{
+
+
+name:name
+
+
+}
+
+
+}
+
 
 });
 
@@ -1378,13 +1404,20 @@ password
 
 
 
+
+
 if(error){
+
 
 alert(error.message);
 
+
 return;
 
+
 }
+
+
 
 
 
@@ -1392,13 +1425,18 @@ return;
 
 if(!data.user){
 
+
 alert(
-"Please disable email confirmation in Supabase while testing."
+"Please confirm your email first."
 );
+
 
 return;
 
+
 }
+
+
 
 
 
@@ -1419,6 +1457,7 @@ await supabaseClient
 
 .insert({
 
+
 id:data.user.id,
 
 name:name,
@@ -1433,7 +1472,10 @@ daily_affirmation:"",
 
 affirmation_date:null
 
+
 });
+
+
 
 
 
@@ -1441,9 +1483,12 @@ affirmation_date:null
 
 if(profileError){
 
+
 alert(profileError.message);
 
+
 return;
+
 
 }
 
@@ -1451,11 +1496,16 @@ return;
 
 
 
+
 document
+
 .getElementById(
 "profileNameInput"
 )
+
 .value=name;
+
+
 
 
 
@@ -1490,6 +1540,7 @@ let email =
 document.getElementById("loginEmail").value;
 
 
+
 let password =
 document.getElementById("loginPassword").value;
 
@@ -1506,9 +1557,11 @@ error
 =
 await supabaseClient.auth.signInWithPassword({
 
+
 email,
 
 password
+
 
 });
 
@@ -1516,13 +1569,18 @@ password
 
 
 
+
 if(error){
+
 
 alert(error.message);
 
+
 return;
 
+
 }
+
 
 
 
@@ -1531,10 +1589,7 @@ return;
 loadUser();
 
 
-
 }
-
-
 
 
 
@@ -1545,7 +1600,7 @@ loadUser();
 
 
 // ==========================
-// GOAL SELECTION
+// GOALS
 // ==========================
 
 
@@ -1569,10 +1624,12 @@ button.innerText;
 if(selectedGoals.includes(goal)){
 
 
+
 selectedGoals =
+
 selectedGoals.filter(
 
-item=>item!==goal
+item=>item !== goal
 
 );
 
@@ -1611,24 +1668,26 @@ function selectEnergy(button){
 
 
 document
+
 .querySelectorAll(".option")
-.forEach(option=>{
+
+.forEach(item=>{
 
 
 if(
 
-option.innerText.includes("Soft") ||
+item.innerText.includes("Soft") ||
 
-option.innerText.includes("Powerful") ||
+item.innerText.includes("Powerful") ||
 
-option.innerText.includes("Luxury") ||
+item.innerText.includes("Luxury") ||
 
-option.innerText.includes("Faith")
+item.innerText.includes("Faith")
 
 ){
 
 
-option.classList.remove(
+item.classList.remove(
 "selected"
 );
 
@@ -1637,6 +1696,7 @@ option.classList.remove(
 
 
 });
+
 
 
 
@@ -1665,6 +1725,7 @@ button.innerText;
 
 
 
+
 // ==========================
 // SAVE PERSONALISATION
 // ==========================
@@ -1678,7 +1739,7 @@ if(selectedGoals.length < 3){
 
 
 alert(
-"Please choose at least 3 goals ✨"
+"Choose at least 3 goals ✨"
 );
 
 
@@ -1686,6 +1747,8 @@ return;
 
 
 }
+
+
 
 
 
@@ -1705,6 +1768,9 @@ return;
 
 
 
+
+
+
 const {
 
 data:{
@@ -1713,7 +1779,6 @@ user
 }
 
 }
-
 =
 await supabaseClient.auth.getUser();
 
@@ -1721,45 +1786,48 @@ await supabaseClient.auth.getUser();
 
 
 
+
 if(!user){
+
 
 alert(
 "Please login again."
 );
 
+
 return;
 
+
 }
+
 
 
 
 
 
 let name =
-document.getElementById(
+
+document
+
+.getElementById(
 "profileNameInput"
-).value;
+)
+
+.value;
+
+
 
 
 
 let future =
-document.getElementById(
+
+document
+
+.getElementById(
 "futureInput"
-).value;
+)
 
-
-
-
-
-if(!name || !future){
-
-alert(
-"Tell us about your future self ✨"
-);
-
-return;
-
-}
+.value;
 
 
 
@@ -1780,13 +1848,18 @@ await supabaseClient
 
 .update({
 
+
 name:name,
+
 
 goals:selectedGoals,
 
+
 energy:selectedEnergy,
 
+
 future:future
+
 
 })
 
@@ -1805,11 +1878,15 @@ user.id
 
 if(error){
 
+
 alert(error.message);
+
 
 return;
 
+
 }
+
 
 
 
@@ -1831,15 +1908,13 @@ openScreen(
 
 
 
-
-
-
 // ==========================
 // THEMES
 // ==========================
 
 
 function changeTheme(light,dark){
+
 
 
 document.documentElement
@@ -1850,12 +1925,15 @@ light
 );
 
 
+
 document.documentElement
 
 .style.setProperty(
 "--dark",
 dark
 );
+
+
 
 
 
@@ -1868,8 +1946,8 @@ dark
 };
 
 
-
 }
+
 
 
 
@@ -1889,22 +1967,28 @@ JSON.stringify(selectedTheme)
 
 
 
+
+
 document
+
 .getElementById(
 "navigation"
 )
+
 .style.display="flex";
 
 
 
-await loadUser();
+
+
+loadUser();
 
 
 
 }
 
 // ==========================
-// AFFIRMATION LIBRARY
+// AFFIRMATION DATABASE
 // ==========================
 
 
@@ -1913,32 +1997,33 @@ const affirmationLibrary = {
 
 "💪 Health & Fitness":[
 
-"your body is becoming stronger because you honour yourself through the choices you make every day.",
+"you are building a body you are proud of through discipline and self-love.",
 
-"you are building a healthy, confident body with patience and discipline.",
+"every healthy choice is proof that you are becoming stronger.",
 
-"every workout, every healthy choice and every small action is proof that you are becoming your strongest self.",
+"your body is changing because you choose to show up for yourself.",
 
-"you are proud of the way you show up for your body and your future.",
+"you honour your body and appreciate everything it does for you.",
 
-"your strength is growing physically, mentally and emotionally."
+"you are becoming healthier, stronger and more confident every day."
 
 ],
 
 
 
 
+
 "✨ Confidence":[
 
-"you walk through life knowing you are worthy, capable and enough.",
+"you walk with confidence because you know your worth.",
 
-"you no longer shrink yourself to fit spaces you have outgrown.",
+"you no longer hide your light to make others comfortable.",
+
+"you trust yourself, your choices and your abilities.",
 
 "your confidence grows every time you choose yourself.",
 
-"you trust your voice, your decisions and your unique journey.",
-
-"you are becoming someone who carries herself with confidence and grace."
+"you are becoming someone who is proud of who she is."
 
 ],
 
@@ -1948,15 +2033,15 @@ const affirmationLibrary = {
 
 "💰 Wealth & Success":[
 
-"you are capable of creating a life filled with abundance, freedom and success.",
+"you are creating a future filled with abundance and freedom.",
 
-"you attract opportunities because you continuously improve yourself.",
+"you attract opportunities because you are prepared for success.",
 
-"you think, act and grow like the successful person you are becoming.",
+"you think like the successful person you are becoming.",
 
-"your dreams are possible because you are willing to work for them.",
+"your actions today are building the life you dream about.",
 
-"you are building a future that feels secure, abundant and meaningful."
+"you are worthy of financial growth and abundance."
 
 ],
 
@@ -1966,13 +2051,13 @@ const affirmationLibrary = {
 
 "💼 Career":[
 
-"you are creating a career that uses your talents, passions and strengths.",
+"your talents create opportunities that align with your purpose.",
 
-"you trust your abilities and the value you bring to the world.",
+"you are capable of achieving professional success.",
 
-"new opportunities find you because you are prepared and confident.",
+"you trust your skills and the value you bring.",
 
-"you are becoming the person who achieves professional success."
+"your career grows because you continue improving yourself."
 
 ],
 
@@ -1982,13 +2067,13 @@ const affirmationLibrary = {
 
 "📚 Education & Growth":[
 
-"every lesson you learn is creating a wiser and stronger version of yourself.",
+"you are capable of learning difficult things and growing beyond limits.",
 
-"you are capable of mastering difficult things.",
+"every lesson makes you wiser and stronger.",
 
-"your growth is proof that you are constantly becoming better.",
+"you are committed to becoming the best version of yourself.",
 
-"you are committed to learning, improving and evolving."
+"growth is proof that you are moving forward."
 
 ],
 
@@ -1998,13 +2083,13 @@ const affirmationLibrary = {
 
 "💍 Love & Relationships":[
 
-"you attract healthy love because you know your worth.",
+"you attract love that respects, supports and values you.",
 
-"you deserve relationships filled with respect, honesty and kindness.",
+"you create healthy relationships because you know your worth.",
 
-"you give and receive love from a place of confidence and security.",
+"you deserve a love that feels safe and beautiful.",
 
-"you are becoming someone who creates beautiful connections."
+"you give love from a place of confidence and peace."
 
 ],
 
@@ -2016,11 +2101,11 @@ const affirmationLibrary = {
 
 "you are actively creating the life you once imagined.",
 
-"your dream life is built through the choices you make today.",
+"your dream life begins with the choices you make today.",
 
-"you are worthy of a life that feels peaceful, exciting and fulfilling.",
+"you are worthy of a life that feels peaceful and fulfilling.",
 
-"your future is becoming more beautiful every day."
+"everything you desire is becoming possible through your actions."
 
 ],
 
@@ -2030,11 +2115,11 @@ const affirmationLibrary = {
 
 "✈️ Travel & Adventure":[
 
-"you are open to new experiences, memories and opportunities.",
+"you welcome new experiences and beautiful memories.",
 
-"your life is filled with moments that inspire and excite you.",
+"your life is filled with moments that inspire you.",
 
-"you allow yourself to explore, grow and enjoy life fully."
+"you allow yourself to explore and enjoy everything life offers."
 
 ],
 
@@ -2044,13 +2129,13 @@ const affirmationLibrary = {
 
 "👑 Self-Worth":[
 
-"your worth has never depended on what you achieve; you are valuable because you exist.",
+"you are valuable exactly as you are while becoming who you are meant to be.",
 
-"you treat yourself with the love and respect you deserve.",
+"you choose yourself without guilt.",
 
-"you are becoming someone who knows her value.",
+"you know your worth and you never settle for less.",
 
-"you choose yourself without guilt."
+"you treat yourself with kindness and respect."
 
 ],
 
@@ -2060,13 +2145,13 @@ const affirmationLibrary = {
 
 "🧘 Peace & Mental Strength":[
 
-"your mind is becoming calmer, stronger and more resilient.",
+"your mind is becoming calmer and stronger every day.",
 
 "you protect your peace and trust your journey.",
 
-"you are allowed to slow down while still becoming successful.",
+"you handle challenges with wisdom and courage.",
 
-"you handle challenges with wisdom and strength."
+"you choose peace over unnecessary worries."
 
 ],
 
@@ -2076,13 +2161,13 @@ const affirmationLibrary = {
 
 "🔥 Discipline & Habits":[
 
-"you become your future self through the promises you keep today.",
+"your daily habits are creating your future self.",
 
-"discipline is an act of self-love because you care about your future.",
+"discipline is proof that you believe in your dreams.",
 
-"you are consistent even when motivation fades.",
+"you keep promises to yourself because you matter.",
 
-"your habits are creating the life you desire."
+"small actions create extraordinary results."
 
 ],
 
@@ -2092,13 +2177,13 @@ const affirmationLibrary = {
 
 "🙏 Faith & Spiritual Growth":[
 
-"you trust God's timing while faithfully working toward your purpose.",
+"you trust God's timing while working faithfully toward your dreams.",
 
 "you are becoming the person God created you to be.",
 
 "your faith gives you strength, peace and direction.",
 
-"you are guided, protected and never alone."
+"you are guided and never walk alone."
 
 ],
 
@@ -2108,13 +2193,13 @@ const affirmationLibrary = {
 
 "🌱 Healing & Letting Go":[
 
-"you release what no longer serves you and welcome new beginnings.",
+"you release the past and welcome the future with an open heart.",
 
-"you are allowed to heal, grow and become someone new.",
+"you are allowed to heal and become someone new.",
 
-"your past does not define the beautiful future you are creating.",
+"you choose peace, growth and freedom.",
 
-"you choose peace over what once hurt you."
+"your past does not control your future."
 
 ],
 
@@ -2124,11 +2209,11 @@ const affirmationLibrary = {
 
 "🎨 Creativity":[
 
-"your ideas matter and your creativity has value.",
+"your ideas are valuable and worth sharing.",
 
-"you allow yourself to create without fear of judgement.",
+"your creativity is a gift.",
 
-"your imagination is a gift that deserves to be expressed."
+"you create without fear and express yourself freely."
 
 ],
 
@@ -2138,13 +2223,13 @@ const affirmationLibrary = {
 
 "🌟 Personal Transformation":[
 
-"you are becoming a completely new version of yourself through every choice you make.",
-
-"you are brave enough to leave behind old versions of yourself.",
+"you are becoming the person you always dreamed of being.",
 
 "your transformation is already happening.",
 
-"you are becoming someone you are proud to meet in the mirror."
+"you are brave enough to create a new version of yourself.",
+
+"you are proud of the person you are becoming."
 
 ]
 
@@ -2160,11 +2245,11 @@ const affirmationLibrary = {
 
 
 // ==========================
-// JOHANNESBURG DATE
+// SOUTH AFRICA DATE
 // ==========================
 
 
-function johannesburgDate(){
+function getJHBDate(){
 
 
 return new Intl.DateTimeFormat(
@@ -2173,8 +2258,7 @@ return new Intl.DateTimeFormat(
 
 {
 
-timeZone:
-"Africa/Johannesburg",
+timeZone:"Africa/Johannesburg",
 
 year:"numeric",
 
@@ -2184,10 +2268,7 @@ day:"2-digit"
 
 }
 
-).format(
-new Date()
-);
-
+).format(new Date());
 
 
 }
@@ -2201,15 +2282,15 @@ new Date()
 
 
 // ==========================
-// CREATE DAILY AFFIRMATION
+// GENERATE AFFIRMATION
 // ==========================
 
 
-function createAffirmation(profile){
+function generateAffirmation(profile){
 
 
 
-let chosen = [];
+let available=[];
 
 
 
@@ -2221,7 +2302,7 @@ profile.goals.forEach(goal=>{
 if(affirmationLibrary[goal]){
 
 
-chosen.push(
+available.push(
 
 ...affirmationLibrary[goal]
 
@@ -2238,17 +2319,13 @@ chosen.push(
 
 
 
-let random =
+let message =
 
-chosen[
+available[
 
 Math.floor(
 
-Math.random()
-
-*
-
-chosen.length
+Math.random()*available.length
 
 )
 
@@ -2259,7 +2336,8 @@ chosen.length
 
 
 
-let energyText="";
+
+let energy = "";
 
 
 
@@ -2268,38 +2346,33 @@ let energyText="";
 if(profile.energy.includes("Powerful")){
 
 
-energyText =
-"You are unstoppable. ";
+energy="You are unstoppable. ";
 
 }
 
 
-if(profile.energy.includes("Soft")){
+else if(profile.energy.includes("Luxury")){
 
 
-energyText =
-"Give yourself grace as you grow. ";
-
-}
-
-
-if(profile.energy.includes("Luxury")){
-
-
-energyText =
-"You naturally attract abundance. ";
+energy="You naturally attract abundance. ";
 
 }
 
 
-if(profile.energy.includes("Faith")){
+else if(profile.energy.includes("Faith")){
 
 
-energyText =
-"Trust God's plan for your journey. ";
+energy="Trust the journey God has prepared for you. ";
 
 }
 
+
+else{
+
+
+energy="Give yourself grace as you grow. ";
+
+}
 
 
 
@@ -2310,18 +2383,17 @@ return (
 
 profile.name +
 
-", " +
+", ✨ " +
 
-energyText +
+energy +
 
 "Remember that " +
 
-random +
+message +
 
-" Your future self is already being created through the choices you make today."
+" Your future self is created by the choices you make today."
 
 );
-
 
 
 }
@@ -2334,8 +2406,10 @@ random +
 
 
 
+
+
 // ==========================
-// DAILY RESET SYSTEM
+// DAILY AFFIRMATION CHECK
 // ==========================
 
 
@@ -2344,7 +2418,9 @@ async function loadDailyAffirmation(profile){
 
 
 let today =
-johannesburgDate();
+getJHBDate();
+
+
 
 
 
@@ -2382,9 +2458,9 @@ return;
 
 
 
-let newOne =
+let newAffirmation =
 
-createAffirmation(profile);
+generateAffirmation(profile);
 
 
 
@@ -2397,7 +2473,7 @@ await supabaseClient
 
 .update({
 
-daily_affirmation:newOne,
+daily_affirmation:newAffirmation,
 
 affirmation_date:today
 
@@ -2416,7 +2492,6 @@ profile.id
 
 
 
-
 document
 
 .getElementById(
@@ -2424,7 +2499,7 @@ document
 )
 
 .innerText =
-newOne;
+newAffirmation;
 
 
 
@@ -2435,9 +2510,16 @@ newOne;
 
 
 
-// Manual refresh
+
+
+
+// ==========================
+// MANUAL NEW REFLECTION
+// ==========================
+
 
 async function refreshAffirmation(){
+
 
 
 const {
@@ -2453,9 +2535,11 @@ await supabaseClient.auth.getUser();
 
 
 
+
+
 const {
 
-data
+data:profile
 
 }
 
@@ -2480,8 +2564,11 @@ user.id
 
 
 
+
 let newOne =
-createAffirmation(data);
+
+generateAffirmation(profile);
+
 
 
 
@@ -2495,7 +2582,7 @@ await supabaseClient
 
 daily_affirmation:newOne,
 
-affirmation_date:johannesburgDate()
+affirmation_date:getJHBDate()
 
 })
 
@@ -2521,10 +2608,11 @@ document
 newOne;
 
 
+
 }
 
 // ==========================
-// LOAD USER
+// LOAD USER PROFILE
 // ==========================
 
 
@@ -2588,6 +2676,8 @@ user.id
 
 
 
+
+
 if(error){
 
 console.log(error);
@@ -2601,7 +2691,6 @@ return;
 
 
 
-// show navigation
 
 document
 
@@ -2616,16 +2705,14 @@ document
 
 
 
-
-
 document
 
 .getElementById(
 "homeName"
 )
 
-.innerText =
-data.name;
+.innerText=data.name;
+
 
 
 
@@ -2637,8 +2724,9 @@ document
 "profileDisplayName"
 )
 
-.innerText =
-data.name;
+.innerText=data.name;
+
+
 
 
 
@@ -2650,11 +2738,14 @@ document
 "profileGoals"
 )
 
-.innerText =
+.innerText=
 
 "Goals: " +
 
-data.goals.join(", ");
+data.goals.join(" • ");
+
+
+
 
 
 
@@ -2666,11 +2757,14 @@ document
 "profileEnergy"
 )
 
-.innerText =
+.innerText=
 
 "Energy: " +
 
 data.energy;
+
+
+
 
 
 
@@ -2682,11 +2776,11 @@ document
 "profileFuture"
 )
 
-.innerText =
-
-"Future self: " +
+.innerText=
 
 data.future;
+
+
 
 
 
@@ -2698,9 +2792,11 @@ document
 "futureDisplay"
 )
 
-.innerText =
+.innerText=
 
 data.future;
+
+
 
 
 
@@ -2712,7 +2808,7 @@ document
 "goalsDisplay"
 )
 
-.innerText =
+.innerText=
 
 data.goals.join(" • ");
 
@@ -2727,12 +2823,11 @@ await loadDailyAffirmation(data);
 
 
 
-
 openScreen("home");
 
 
-
 }
+
 
 
 
@@ -2770,24 +2865,26 @@ new FileReader();
 
 
 
+
 reader.onload=function(e){
 
 
 
-let img =
+let image =
 document.createElement("img");
 
 
 
-img.src=e.target.result;
+image.src=e.target.result;
 
 
 
-img.style.width="100%";
+image.style.width="100%";
 
-img.style.borderRadius="18px";
+image.style.borderRadius="20px";
 
-img.style.marginTop="10px";
+image.style.marginTop="10px";
+
 
 
 
@@ -2798,7 +2895,7 @@ document
 "visionGallery"
 )
 
-.appendChild(img);
+.appendChild(image);
 
 
 
@@ -2817,6 +2914,7 @@ reader.readAsDataURL(file);
 
 
 }
+
 
 
 
@@ -2860,7 +2958,8 @@ document
 "journalText"
 )
 
-.value;
+.value.trim();
+
 
 
 
@@ -2868,14 +2967,16 @@ document
 
 if(!text){
 
+
 alert(
 "Write something first ✨"
 );
 
+
 return;
 
-}
 
+}
 
 
 
@@ -2906,12 +3007,14 @@ content:text
 
 
 
-
 if(error){
+
 
 alert(error.message);
 
+
 return;
+
 
 }
 
@@ -2926,6 +3029,7 @@ document
 )
 
 .value="";
+
 
 
 
@@ -2948,6 +3052,7 @@ alert(
 
 
 
+
 // ==========================
 // LOGOUT
 // ==========================
@@ -2956,16 +3061,12 @@ alert(
 async function logout(){
 
 
-await supabaseClient
 
-.auth
-
-.signOut();
+await supabaseClient.auth.signOut();
 
 
 
 location.reload();
-
 
 
 }
@@ -2981,7 +3082,7 @@ location.reload();
 
 
 // ==========================
-// START APP
+// APP START
 // ==========================
 
 
@@ -2990,8 +3091,6 @@ window.onload = async()=>{
 
 
 
-
-// load saved theme
 
 const savedTheme =
 
@@ -3003,13 +3102,15 @@ localStorage.getItem(
 
 
 
+
 if(savedTheme){
 
 
 
-let theme =
+let theme=
 
 JSON.parse(savedTheme);
+
 
 
 
@@ -3023,6 +3124,7 @@ document.documentElement
 theme.light
 
 );
+
 
 
 
@@ -3064,6 +3166,7 @@ await supabaseClient.auth.getUser();
 
 
 
+
 if(user){
 
 
@@ -3092,7 +3195,9 @@ loadUser();
 
 
 if(
+
 "serviceWorker" in navigator
+
 ){
 
 
@@ -3110,16 +3215,17 @@ navigator.serviceWorker.register(
 );
 
 
-}
-
-);
+});
 
 
 }
+
+
 
 
 
 </script>
+
 
 
 </div>
@@ -3129,6 +3235,3 @@ navigator.serviceWorker.register(
 
 
 </html>
-
-
-</section>
