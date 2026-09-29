@@ -1,0 +1,3561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Already Mine ✨</title>
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Arial', sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+    color:white;
+    overflow-x:hidden;
+
+}
+
+
+/* BACKGROUND */
+
+.background{
+
+position:fixed;
+inset:0;
+
+background:
+linear-gradient(
+135deg,
+#ff9ac7,
+#c084fc,
+#6dd5fa
+);
+
+z-index:-2;
+
+animation:
+move 10s infinite alternate;
+
+}
+
+
+@keyframes move{
+
+from{
+filter:hue-rotate(0deg);
+}
+
+to{
+filter:hue-rotate(45deg);
+}
+
+}
+
+
+
+/* LOADING */
+
+#loading{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+background:
+linear-gradient(
+135deg,
+#ff9ac7,
+#c084fc
+);
+
+z-index:1000;
+
+animation:
+hideLoading 2.5s forwards;
+
+}
+
+
+.loading-logo{
+
+font-size:40px;
+font-weight:bold;
+
+}
+
+
+@keyframes hideLoading{
+
+0%{
+opacity:1;
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+visibility:hidden;
+}
+
+}
+
+
+
+/* SCREENS */
+
+
+.screen{
+
+display:none;
+
+}
+
+
+.screen.active{
+
+display:block;
+
+}
+
+
+
+.container{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:25px;
+
+}
+
+
+
+/* CARD */
+
+
+.card{
+
+width:100%;
+max-width:500px;
+
+padding:40px;
+
+background:
+rgba(255,255,255,.18);
+
+backdrop-filter:
+blur(20px);
+
+border-radius:35px;
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.2);
+
+}
+
+
+
+.logo{
+
+text-align:center;
+
+font-size:32px;
+
+font-weight:bold;
+
+margin-bottom:25px;
+
+}
+
+
+
+h1{
+
+text-align:center;
+
+font-size:36px;
+
+margin-bottom:20px;
+
+}
+
+
+
+p{
+
+text-align:center;
+
+line-height:1.6;
+
+opacity:.9;
+
+}
+
+
+
+
+/* BUTTONS */
+
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border-radius:50px;
+
+border:none;
+
+margin-top:15px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+button:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+.primary{
+
+background:white;
+
+color:#c25ca7;
+
+}
+
+
+
+.secondary{
+
+background:transparent;
+
+border:2px solid white;
+
+color:white;
+
+}
+
+
+
+
+/* INPUTS */
+
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:20px;
+
+margin-top:15px;
+
+outline:none;
+
+font-size:15px;
+
+}
+
+
+
+.password-box{
+
+position:relative;
+
+}
+
+
+
+.password-box span{
+
+position:absolute;
+
+right:20px;
+
+top:30px;
+
+cursor:pointer;
+
+}
+
+
+
+#strength{
+
+margin-top:10px;
+
+font-size:13px;
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+h1{
+
+font-size:30px;
+
+}
+
+
+.card{
+
+padding:30px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="background"></div>
+
+
+
+<!-- LOADING -->
+
+<div id="loading">
+
+<div class="loading-logo">
+
+✨ Already Mine
+
+</div>
+
+<p>
+Creating your beautiful day...
+</p>
+
+</div>
+
+
+
+
+
+
+<!-- WELCOME -->
+
+<section id="welcome" class="screen active">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<div class="logo">
+
+✨ Already Mine
+
+</div>
+
+
+
+<h1>
+
+Become the person
+you're already meant to be.
+
+</h1>
+
+
+<p>
+
+Your personalized daily affirmations,
+mood tracking and dream life journey.
+
+</p>
+
+
+
+
+<button class="primary"
+onclick="openScreen('signup')">
+
+Create Account
+
+</button>
+
+
+
+<button class="secondary"
+onclick="openScreen('login')">
+
+Login
+
+</button>
+
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- SIGNUP -->
+
+
+<section id="signup" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+Create Account 🌸
+</h1>
+
+
+
+<input
+id="name"
+placeholder="Your name">
+
+
+
+<input
+id="email"
+placeholder="Email address">
+
+
+
+
+
+<div class="password-box">
+
+
+<input
+id="password"
+type="password"
+placeholder="Password"
+onkeyup="passwordStrength()">
+
+
+
+<span onclick="togglePassword()">
+
+👁
+
+</span>
+
+
+</div>
+
+
+
+<div id="strength">
+
+Password strength
+
+</div>
+
+
+
+
+
+<button class="primary"
+onclick="createAccount()">
+
+Continue
+
+</button>
+
+
+
+
+<button class="secondary"
+onclick="openScreen('welcome')">
+
+Back
+
+</button>
+
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- LOGIN -->
+
+
+<section id="login" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+
+Welcome Back 💌
+
+</h1>
+
+
+
+<input
+placeholder="Email">
+
+
+
+<div class="password-box">
+
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password">
+
+
+
+<span onclick="toggleLoginPassword()">
+
+👁
+
+</span>
+
+
+
+</div>
+
+
+
+
+<button class="primary">
+
+Login
+
+</button>
+
+
+
+<button class="secondary"
+onclick="openScreen('welcome')">
+
+Back
+
+</button>
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<script>
+
+
+function openScreen(id){
+
+document
+.querySelectorAll(".screen")
+.forEach(screen=>{
+
+screen.classList.remove("active");
+
+});
+
+
+document
+.getElementById(id)
+.classList.add("active");
+
+}
+
+
+
+
+
+
+
+function togglePassword(){
+
+let p =
+document.getElementById("password");
+
+
+p.type =
+p.type==="password"
+?
+"text"
+:
+"password";
+
+}
+
+
+
+
+function toggleLoginPassword(){
+
+let p =
+document.getElementById("loginPassword");
+
+
+p.type =
+p.type==="password"
+?
+"text"
+:
+"password";
+
+}
+
+
+
+
+
+function passwordStrength(){
+
+
+let p =
+document.getElementById("password").value;
+
+
+
+let result =
+document.getElementById("strength");
+
+
+
+if(p.length<5){
+
+result.innerHTML="Weak 🔴";
+
+}
+
+else if(p.length<9){
+
+result.innerHTML="Medium 🟡";
+
+}
+
+else{
+
+result.innerHTML="Strong 🟢";
+
+}
+
+
+}
+
+
+
+
+
+
+function createAccount(){
+
+
+let user={
+
+name:
+document.getElementById("name").value,
+
+email:
+document.getElementById("email").value
+
+};
+
+
+
+localStorage.setItem(
+
+"alreadyMineUser",
+
+JSON.stringify(user)
+
+);
+
+
+
+openScreen("theme");
+
+
+}
+
+
+
+
+
+</script>
+
+
+<!-- ==========================
+THEME SELECTION
+========================== -->
+
+
+<section id="theme" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+Choose Your Theme 🌈
+</h1>
+
+
+<p>
+Choose the colour that feels like you.
+</p>
+
+
+
+<div class="theme-grid">
+
+
+<div class="theme rose"
+onclick="chooseTheme(this,'Blushing Rose')">
+🌸<br>
+Blushing Rose
+</div>
+
+
+
+<div class="theme red"
+onclick="chooseTheme(this,'Cherry Kiss')">
+❤️<br>
+Cherry Kiss
+</div>
+
+
+
+<div class="theme yellow"
+onclick="chooseTheme(this,'Sunshine Glow')">
+☀️<br>
+Sunshine Glow
+</div>
+
+
+
+<div class="theme purple"
+onclick="chooseTheme(this,'Lavender Dream')">
+💜<br>
+Lavender Dream
+</div>
+
+
+
+<div class="theme orange"
+onclick="chooseTheme(this,'Peach Sunset')">
+🍑<br>
+Peach Sunset
+</div>
+
+
+
+<div class="theme green"
+onclick="chooseTheme(this,'Emerald Garden')">
+🌿<br>
+Emerald Garden
+</div>
+
+
+
+<div class="theme silver"
+onclick="chooseTheme(this,'Moonlight Silver')">
+✨<br>
+Moonlight Silver
+</div>
+
+
+
+<div class="theme gold"
+onclick="chooseTheme(this,'Golden Era')">
+👑<br>
+Golden Era
+</div>
+
+
+
+<div class="theme blue"
+onclick="chooseTheme(this,'Ocean Breeze')">
+🌊<br>
+Ocean Breeze
+</div>
+
+
+
+</div>
+
+
+
+
+<button class="primary"
+onclick="openScreen('goals')">
+
+Continue
+
+</button>
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- ==========================
+GOALS
+========================== -->
+
+
+<section id="goals" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+Your Goals 🌱
+</h1>
+
+
+<p>
+Choose everything you want to improve.
+</p>
+
+
+<div id="goalsList"></div>
+
+
+
+
+<button class="primary"
+onclick="openScreen('style')">
+
+Continue
+
+</button>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- ==========================
+AFFIRMATION STYLE
+========================== -->
+
+
+<section id="style" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+How should we motivate you? 💌
+</h1>
+
+
+<p>
+Choose your Already Mine personality.
+</p>
+
+
+<div id="styleList"></div>
+
+
+
+
+<button class="primary"
+onclick="finishSetup()">
+
+Start My Journey ✨
+
+</button>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<style>
+
+
+/* THEMES */
+
+
+.theme-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:12px;
+
+margin-top:25px;
+
+}
+
+
+
+.theme{
+
+padding:20px 10px;
+
+border-radius:25px;
+
+text-align:center;
+
+cursor:pointer;
+
+border:3px solid transparent;
+
+font-weight:bold;
+
+}
+
+
+
+.theme.selected,
+.goal.selected,
+.style-choice.selected{
+
+border:3px solid white;
+
+transform:scale(1.05);
+
+}
+
+
+
+
+.rose{
+
+background:
+linear-gradient(
+135deg,#ff9ac7,#ff6da8
+);
+
+}
+
+
+
+.red{
+
+background:
+linear-gradient(
+135deg,#ff758c,#ff1744
+);
+
+}
+
+
+
+.yellow{
+
+background:
+linear-gradient(
+135deg,#ffe082,#ffb300
+);
+
+}
+
+
+
+.purple{
+
+background:
+linear-gradient(
+135deg,#d8b4fe,#7c3aed
+);
+
+}
+
+
+
+.orange{
+
+background:
+linear-gradient(
+135deg,#ffb07c,#ff6b35
+);
+
+}
+
+
+
+.green{
+
+background:
+linear-gradient(
+135deg,#86efac,#16a34a
+);
+
+}
+
+
+
+.silver{
+
+background:
+linear-gradient(
+135deg,#e5e7eb,#64748b
+);
+
+}
+
+
+
+.gold{
+
+background:
+linear-gradient(
+135deg,#fde68a,#d97706
+);
+
+}
+
+
+
+.blue{
+
+background:
+linear-gradient(
+135deg,#7dd3fc,#2563eb
+);
+
+}
+
+
+
+
+
+.goal,
+.style-choice{
+
+background:
+rgba(255,255,255,.15);
+
+padding:15px;
+
+border-radius:20px;
+
+margin-top:12px;
+
+cursor:pointer;
+
+text-align:center;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+// ==========================
+// THEMES
+// ==========================
+
+
+let chosenTheme="";
+
+
+
+function chooseTheme(element,name){
+
+
+document
+.querySelectorAll(".theme")
+.forEach(t=>{
+
+t.classList.remove("selected");
+
+});
+
+
+element.classList.add("selected");
+
+
+chosenTheme=name;
+
+
+}
+
+
+
+
+
+
+
+
+// ==========================
+// GOALS
+// ==========================
+
+
+const goalOptions=[
+
+
+"❤️ Self Love",
+
+"✨ Confidence",
+
+"⚖️ Weight Loss",
+
+"💪 Fitness",
+
+"🎯 Discipline",
+
+"💰 Financial Freedom",
+
+"💼 Career",
+
+"📚 Study",
+
+"🙏 Faith",
+
+"❤️ Relationships",
+
+"🌿 Mental Health",
+
+"🪞 Body Confidence",
+
+"🌸 Anxiety Relief",
+
+"🌱 Personal Growth",
+
+"🌅 Dream Life",
+
+"✈️ Travel"
+
+
+];
+
+
+
+let chosenGoals=[];
+
+
+
+let goalHTML="";
+
+
+
+goalOptions.forEach(goal=>{
+
+
+goalHTML+=`
+
+<div class="goal"
+onclick="selectGoal(this,'${goal}')">
+
+${goal}
+
+</div>
+
+`;
+
+
+});
+
+
+document.getElementById(
+"goalsList"
+).innerHTML=goalHTML;
+
+
+
+
+
+
+function selectGoal(element,goal){
+
+
+element.classList.toggle("selected");
+
+
+
+if(chosenGoals.includes(goal)){
+
+
+chosenGoals =
+chosenGoals.filter(
+g=>g!==goal
+);
+
+
+}
+
+else{
+
+
+chosenGoals.push(goal);
+
+
+}
+
+
+}
+
+
+
+
+
+
+
+// ==========================
+// STYLES
+// ==========================
+
+
+
+const personalities=[
+
+
+"🌸 Soft & Gentle",
+
+"👑 Main Character",
+
+🔥 "Discipline Mode",
+
+"🌿 Healing",
+
+"🙏 Faith Filled",
+
+"💪 Strong & Motivated",
+
+"💎 Luxury Mindset",
+
+"📚 Study Focus"
+
+
+];
+
+
+
+let chosenStyle="";
+
+
+
+let styleHTML="";
+
+
+
+personalities.forEach(style=>{
+
+
+styleHTML+=`
+
+<div class="style-choice"
+onclick="selectStyle(this,'${style}')">
+
+${style}
+
+</div>
+
+`;
+
+
+});
+
+
+document.getElementById(
+"styleList"
+).innerHTML=styleHTML;
+
+
+
+
+
+
+function selectStyle(element,style){
+
+
+document
+.querySelectorAll(".style-choice")
+.forEach(x=>{
+
+x.classList.remove("selected");
+
+});
+
+
+element.classList.add("selected");
+
+
+chosenStyle=style;
+
+
+}
+
+
+
+
+
+
+
+// ==========================
+// SAVE SETUP
+// ==========================
+
+
+
+function finishSetup(){
+
+
+
+let user =
+JSON.parse(
+localStorage.getItem(
+"alreadyMineUser"
+)
+);
+
+
+
+user.theme=chosenTheme;
+
+user.goals=chosenGoals;
+
+user.style=chosenStyle;
+
+user.timezone=
+"Africa/Johannesburg";
+
+
+
+localStorage.setItem(
+
+"alreadyMineUser",
+
+JSON.stringify(user)
+
+);
+
+
+
+openScreen("home");
+
+
+}
+
+
+
+
+</script>
+
+
+<!-- ==========================
+HOME SCREEN
+========================== -->
+
+
+<section id="home" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1 id="helloName">
+
+Good Morning ☀️
+
+</h1>
+
+
+
+<p id="todayDate"></p>
+
+
+
+
+
+<div class="streak-box">
+
+🔥 <span id="streak">0</span> Day Streak
+
+</div>
+
+
+
+
+
+
+<div class="daily-card">
+
+
+<h2>
+💌 Your Daily Letter
+</h2>
+
+
+<p id="dailyLetter">
+
+Loading...
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="affirmation-card">
+
+
+<h2>
+✨ Today's Affirmation
+</h2>
+
+
+<p id="todayAffirmation">
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="challenge-card">
+
+
+<h2>
+🎯 Today's Challenge
+</h2>
+
+
+<p id="todayChallenge">
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<p id="nextReset">
+
+</p>
+
+
+
+
+
+
+<button class="primary"
+onclick="openScreen('mood')">
+
+😊 Mood Tracker
+
+</button>
+
+
+
+<button class="secondary"
+onclick="openScreen('journal')">
+
+📖 Journal
+
+</button>
+
+
+
+<button class="secondary"
+onclick="openScreen('profile')">
+
+👤 Profile
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<style>
+
+
+.streak-box{
+
+text-align:center;
+
+font-size:18px;
+
+margin:20px 0;
+
+}
+
+
+
+.daily-card,
+.affirmation-card,
+.challenge-card{
+
+background:
+rgba(255,255,255,.15);
+
+padding:20px;
+
+border-radius:25px;
+
+margin-top:20px;
+
+}
+
+
+
+.daily-card h2,
+.affirmation-card h2,
+.challenge-card h2{
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+<script>
+
+
+// ==========================
+// AFFIRMATION DATABASE
+// ==========================
+// This will expand to 1000+ later
+
+
+const affirmationBank=[
+
+
+"I trust myself and the journey I am creating.",
+
+
+"I am becoming more confident every single day.",
+
+
+"I am proud of the progress I am making.",
+
+
+"I deserve love, happiness and success.",
+
+
+"I have the discipline to build my dream life.",
+
+
+"My body deserves kindness and respect.",
+
+
+"I believe in my abilities and my future.",
+
+
+"I am allowed to grow at my own pace.",
+
+
+"I choose habits that support my goals.",
+
+
+"I am becoming the best version of myself.",
+
+
+"I attract opportunities that align with my dreams.",
+
+
+"I am stronger than my doubts.",
+
+
+"I am worthy exactly as I am.",
+
+
+"I choose peace over pressure.",
+
+
+"Every small step moves me closer to my goals."
+
+
+];
+
+
+
+
+
+
+const challengeBank=[
+
+
+"Drink enough water today 💧",
+
+
+"Take a 20 minute walk 🚶‍♀️",
+
+
+"Write 3 things you are grateful for 🌸",
+
+
+"Spend 15 minutes learning something new 📚",
+
+
+"Do something kind for yourself ❤️",
+
+
+"Organise one small area around you ✨",
+
+
+"Move your body today 💪",
+
+
+"Take time to breathe and reset 🌿"
+
+
+];
+
+
+
+
+
+
+
+// ==========================
+// JOHANNESBURG TIME
+// ==========================
+
+
+function jhbTime(){
+
+
+return new Date(
+
+new Date().toLocaleString(
+"en-US",
+{
+timeZone:
+"Africa/Johannesburg"
+}
+
+)
+
+);
+
+
+}
+
+
+
+
+
+
+
+function todayKey(){
+
+
+let d=jhbTime();
+
+
+
+return (
+
+d.getFullYear()
++
+"-"
++
+(d.getMonth()+1)
++
+"-"
++
+d.getDate()
+
+);
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// LOAD HOME
+// ==========================
+
+
+
+function loadHome(){
+
+
+
+let user =
+JSON.parse(
+localStorage.getItem(
+"alreadyMineUser"
+)
+);
+
+
+
+if(!user)return;
+
+
+
+
+
+
+document.getElementById(
+"helloName"
+).innerHTML=
+
+"Good Morning "
++
+user.name
++
+" ☀️";
+
+
+
+
+
+document.getElementById(
+"todayDate"
+).innerHTML=
+
+jhbTime()
+.toLocaleDateString(
+"en-ZA",
+{
+weekday:"long",
+day:"numeric",
+month:"long"
+}
+);
+
+
+
+
+
+createDailyLetter(user);
+
+
+
+updateStreak();
+
+
+
+countdown();
+
+}
+
+
+
+ 
+
+
+
+
+
+// ==========================
+// DAILY LETTER
+// ==========================
+
+
+function createDailyLetter(user){
+
+
+
+let saved =
+JSON.parse(
+localStorage.getItem(
+"dailyContent"
+)
+);
+
+
+
+
+if(saved && saved.date===todayKey()){
+
+
+displayDaily(saved);
+
+
+return;
+
+
+}
+
+
+
+
+
+
+let affirmation =
+
+affirmationBank[
+Math.floor(
+Math.random()
+*
+affirmationBank.length
+)
+
+];
+
+
+
+
+
+let challenge=
+
+challengeBank[
+Math.floor(
+Math.random()
+*
+challengeBank.length
+)
+
+];
+
+
+
+
+
+let goal="personal growth";
+
+
+
+if(user.goals &&
+user.goals.length>0){
+
+goal=user.goals[0];
+
+}
+
+
+
+
+
+
+let letter =
+
+`${user.name}, today is another chance to move closer to your ${goal} journey. Remember that small actions create big changes. Keep believing in yourself. ✨`;
+
+
+
+
+
+
+let data={
+
+
+date:todayKey(),
+
+letter:letter,
+
+affirmation:affirmation,
+
+challenge:challenge
+
+
+};
+
+
+
+
+
+localStorage.setItem(
+
+"dailyContent",
+
+JSON.stringify(data)
+
+);
+
+
+
+displayDaily(data);
+
+
+
+}
+
+
+
+
+
+
+
+
+function displayDaily(data){
+
+
+
+document.getElementById(
+"dailyLetter"
+).innerHTML=data.letter;
+
+
+
+document.getElementById(
+"todayAffirmation"
+).innerHTML=data.affirmation;
+
+
+
+document.getElementById(
+"todayChallenge"
+).innerHTML=data.challenge;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// STREAK
+// ==========================
+
+
+
+function updateStreak(){
+
+
+
+let data =
+JSON.parse(
+localStorage.getItem(
+"streakData"
+)
+)
+||
+{
+count:0,
+last:""
+};
+
+
+
+if(data.last!==todayKey()){
+
+
+data.count++;
+
+data.last=todayKey();
+
+
+
+localStorage.setItem(
+
+"streakData",
+
+JSON.stringify(data)
+
+);
+
+
+}
+
+
+
+document.getElementById(
+"streak"
+).innerHTML=data.count;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// RESET COUNTDOWN
+// ==========================
+
+
+
+function countdown(){
+
+
+let now=jhbTime();
+
+
+
+let tomorrow=new Date(now);
+
+
+
+tomorrow.setHours(
+24,
+0,
+0,
+0
+);
+
+
+
+let diff=tomorrow-now;
+
+
+
+let hours=Math.floor(
+diff/(1000*60*60)
+);
+
+
+
+let minutes=Math.floor(
+(diff/(1000*60))%60
+);
+
+
+
+document.getElementById(
+"nextReset"
+).innerHTML=
+
+`✨ New affirmation in ${hours}h ${minutes}m`;
+
+
+}
+
+
+
+
+// Update when opening home
+
+
+let oldOpenScreen =
+openScreen;
+
+
+
+openScreen=function(id){
+
+
+oldOpenScreen(id);
+
+
+
+if(id==="home"){
+
+loadHome();
+
+}
+
+
+}
+
+
+
+</script>
+
+
+<!-- ==========================
+MOOD TRACKER
+========================== -->
+
+
+<section id="mood" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+How are you feeling? 😊
+</h1>
+
+
+<p>
+Your feelings help you understand your journey.
+</p>
+
+
+
+<div id="moods"></div>
+
+
+
+<textarea id="moodNote"
+placeholder="Write about your day..."></textarea>
+
+
+
+
+<button class="primary"
+onclick="saveMood()">
+
+Save Mood
+
+</button>
+
+
+
+
+<button class="secondary"
+onclick="openScreen('home')">
+
+Back
+
+</button>
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+JOURNAL
+========================== -->
+
+
+<section id="journal" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+My Journal 📖
+</h1>
+
+
+<p>
+Your private space to reflect.
+</p>
+
+
+
+
+<textarea
+id="gratitude"
+placeholder="Today I am grateful for...">
+
+</textarea>
+
+
+
+
+<textarea
+id="reflection"
+placeholder="Today's reflection...">
+
+</textarea>
+
+
+
+
+
+<textarea
+id="thoughts"
+placeholder="Write anything on your mind...">
+
+</textarea>
+
+
+
+
+
+
+<button class="primary"
+onclick="saveJournal()">
+
+Save Entry
+
+</button>
+
+
+
+
+<div id="journalMessage"></div>
+
+
+
+
+<button class="secondary"
+onclick="openScreen('home')">
+
+Back
+
+</button>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+VISION BOARD
+========================== -->
+
+
+<section id="vision" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+My Vision Board 🌈
+</h1>
+
+
+<p>
+Visualise the life you are creating.
+</p>
+
+
+
+
+<input
+type="file"
+id="visionFile"
+accept="image/*">
+
+
+
+
+
+<input
+id="visionText"
+placeholder="What is this dream?">
+
+
+
+
+
+
+<button class="primary"
+onclick="saveVision()">
+
+Add Dream
+
+</button>
+
+
+
+
+<div id="visionGallery"></div>
+
+
+
+
+
+
+<button class="secondary"
+onclick="openScreen('home')">
+
+Back
+
+</button>
+
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<style>
+
+
+textarea{
+
+width:100%;
+
+min-height:100px;
+
+margin-top:15px;
+
+border:none;
+
+border-radius:20px;
+
+padding:15px;
+
+resize:none;
+
+font-size:14px;
+
+}
+
+
+
+.mood{
+
+background:
+rgba(255,255,255,.15);
+
+padding:15px;
+
+border-radius:20px;
+
+margin-top:10px;
+
+cursor:pointer;
+
+text-align:center;
+
+}
+
+
+
+.mood.selected{
+
+border:3px solid white;
+
+transform:scale(1.05);
+
+}
+
+
+
+.vision-item{
+
+background:
+rgba(255,255,255,.15);
+
+padding:15px;
+
+border-radius:20px;
+
+margin-top:15px;
+
+text-align:center;
+
+}
+
+
+
+.vision-item img{
+
+width:100%;
+
+border-radius:15px;
+
+}
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+// ==========================
+// MOOD SYSTEM
+// ==========================
+
+
+const moodOptions=[
+
+
+"😄 Amazing",
+
+"😊 Happy",
+
+"🙂 Good",
+
+"😌 Calm",
+
+"😐 Okay",
+
+"😕 Stressed",
+
+"😔 Sad",
+
+"😭 Overwhelmed",
+
+"😡 Frustrated",
+
+"😴 Tired"
+
+
+];
+
+
+
+let selectedMood="";
+
+
+
+let moodHTML="";
+
+
+
+moodOptions.forEach(m=>{
+
+
+moodHTML += `
+
+<div class="mood"
+onclick="chooseMood(this,'${m}')">
+
+${m}
+
+</div>
+
+`;
+
+
+});
+
+
+
+document.getElementById(
+"moods"
+).innerHTML=moodHTML;
+
+
+
+
+
+
+
+function chooseMood(element,mood){
+
+
+document
+.querySelectorAll(".mood")
+.forEach(x=>{
+
+x.classList.remove("selected");
+
+});
+
+
+element.classList.add("selected");
+
+
+selectedMood=mood;
+
+
+}
+
+
+
+
+
+
+
+function saveMood(){
+
+
+
+let history=
+
+JSON.parse(
+localStorage.getItem(
+"moodHistory"
+)
+)
+||
+[];
+
+
+
+
+
+history.push({
+
+date:todayKey(),
+
+mood:selectedMood,
+
+note:
+document.getElementById(
+"moodNote"
+).value
+
+
+});
+
+
+
+
+
+localStorage.setItem(
+
+"moodHistory",
+
+JSON.stringify(history)
+
+);
+
+
+
+
+
+alert(
+"Your mood has been saved 💗"
+);
+
+
+
+openScreen("home");
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// JOURNAL
+// ==========================
+
+
+
+function saveJournal(){
+
+
+
+let entries=
+
+JSON.parse(
+localStorage.getItem(
+"journalEntries"
+)
+)
+||
+[];
+
+
+
+
+entries.push({
+
+
+date:todayKey(),
+
+
+gratitude:
+document.getElementById(
+"gratitude"
+).value,
+
+
+reflection:
+document.getElementById(
+"reflection"
+).value,
+
+
+thoughts:
+document.getElementById(
+"thoughts"
+).value
+
+
+});
+
+
+
+
+
+localStorage.setItem(
+
+"journalEntries",
+
+JSON.stringify(entries)
+
+);
+
+
+
+
+document.getElementById(
+"journalMessage"
+).innerHTML=
+
+"Saved with love ✨";
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// VISION BOARD
+// ==========================
+
+
+function saveVision(){
+
+
+let file =
+document.getElementById(
+"visionFile"
+).files[0];
+
+
+
+let text =
+document.getElementById(
+"visionText"
+).value;
+
+
+
+if(!file)return;
+
+
+
+
+let reader=new FileReader();
+
+
+
+reader.onload=function(e){
+
+
+
+let visions=
+
+JSON.parse(
+localStorage.getItem(
+"visions"
+)
+)
+||
+[];
+
+
+
+
+
+visions.push({
+
+image:e.target.result,
+
+text:text
+
+});
+
+
+
+
+
+localStorage.setItem(
+
+"visions",
+
+JSON.stringify(visions)
+
+);
+
+
+
+
+
+loadVision();
+
+
+};
+
+
+
+reader.readAsDataURL(file);
+
+
+
+}
+
+
+
+
+
+
+
+
+function loadVision(){
+
+
+
+let gallery=
+document.getElementById(
+"visionGallery"
+);
+
+
+
+if(!gallery)return;
+
+
+
+gallery.innerHTML="";
+
+
+
+let visions=
+
+JSON.parse(
+localStorage.getItem(
+"visions"
+)
+)
+||
+[];
+
+
+
+
+visions.forEach(v=>{
+
+
+gallery.innerHTML += `
+
+
+<div class="vision-item">
+
+
+<img src="${v.image}">
+
+
+<p>${v.text}</p>
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+loadVision();
+
+
+
+</script>
+
+
+
+
+
+<!-- ==========================
+PROFILE
+========================== -->
+
+
+<section id="profile" class="screen">
+
+
+<div class="container">
+
+
+<div class="card">
+
+
+<h1>
+My Profile 👤
+</h1>
+
+
+<p>
+Edit your Already Mine experience.
+</p>
+
+
+
+
+<input
+id="profileName"
+placeholder="Your name">
+
+
+
+
+
+
+<h2 style="margin-top:20px;">
+Your Goals 🌱
+</h2>
+
+
+
+<div id="savedGoals"></div>
+
+
+
+
+
+
+<h2 style="margin-top:20px;">
+Theme 🎨
+</h2>
+
+
+
+<select id="themeChange"
+onchange="changeTheme()">
+
+
+<option>Blushing Rose</option>
+
+<option>Cherry Kiss</option>
+
+<option>Sunshine Glow</option>
+
+<option>Lavender Dream</option>
+
+<option>Peach Sunset</option>
+
+<option>Emerald Garden</option>
+
+<option>Moonlight Silver</option>
+
+<option>Golden Era</option>
+
+<option>Ocean Breeze</option>
+
+
+</select>
+
+
+
+
+
+
+<button class="primary"
+onclick="updateProfile()">
+
+Save Profile
+
+</button>
+
+
+
+
+
+
+<button class="secondary"
+onclick="openScreen('home')">
+
+Back
+
+</button>
+
+
+
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================
+BOTTOM NAVIGATION
+========================== -->
+
+
+<nav id="navigation">
+
+
+<button onclick="openScreen('home')">
+🏠
+</button>
+
+
+<button onclick="openScreen('mood')">
+😊
+</button>
+
+
+<button onclick="openScreen('journal')">
+📖
+</button>
+
+
+<button onclick="openScreen('vision')">
+🌈
+</button>
+
+
+<button onclick="openScreen('profile')">
+👤
+</button>
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+<style>
+
+
+#navigation{
+
+position:fixed;
+
+bottom:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:90%;
+
+max-width:450px;
+
+
+background:
+rgba(255,255,255,.2);
+
+
+backdrop-filter:
+blur(20px);
+
+
+border-radius:40px;
+
+
+display:flex;
+
+justify-content:space-around;
+
+padding:10px;
+
+
+}
+
+
+
+#navigation button{
+
+background:none;
+
+color:white;
+
+font-size:25px;
+
+padding:5px;
+
+margin:0;
+
+width:auto;
+
+}
+
+
+
+select{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:20px;
+
+margin-top:15px;
+
+}
+
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+
+
+// ==========================
+// PROFILE LOAD
+// ==========================
+
+
+function loadProfile(){
+
+
+
+let user=
+
+JSON.parse(
+localStorage.getItem(
+"alreadyMineUser"
+)
+);
+
+
+
+if(!user)return;
+
+
+
+
+document.getElementById(
+"profileName"
+).value=user.name;
+
+
+
+document.getElementById(
+"savedGoals"
+).innerHTML=
+
+(user.goals || [])
+.join("<br>");
+
+
+
+document.getElementById(
+"themeChange"
+).value=
+
+user.theme ||
+"Blushing Rose";
+
+
+
+}
+
+
+
+
+
+
+
+function updateProfile(){
+
+
+
+let user=
+
+JSON.parse(
+localStorage.getItem(
+"alreadyMineUser"
+)
+);
+
+
+
+user.name=
+
+document.getElementById(
+"profileName"
+).value;
+
+
+
+
+localStorage.setItem(
+
+"alreadyMineUser",
+
+JSON.stringify(user)
+
+);
+
+
+
+alert(
+"Profile updated ✨"
+);
+
+
+
+loadHome();
+
+
+}
+
+
+
+
+
+
+
+
+
+// ==========================
+// THEME CHANGE
+// ==========================
+
+
+
+function changeTheme(){
+
+
+
+let selected=
+
+document.getElementById(
+"themeChange"
+).value;
+
+
+
+let bg="";
+
+
+
+switch(selected){
+
+
+
+case "Blushing Rose":
+
+bg="linear-gradient(135deg,#ff9ac7,#ff6da8)";
+
+break;
+
+
+
+case "Cherry Kiss":
+
+bg="linear-gradient(135deg,#ff758c,#ff1744)";
+
+break;
+
+
+
+case "Sunshine Glow":
+
+bg="linear-gradient(135deg,#ffe082,#ffb300)";
+
+break;
+
+
+
+case "Lavender Dream":
+
+bg="linear-gradient(135deg,#d8b4fe,#7c3aed)";
+
+break;
+
+
+
+case "Peach Sunset":
+
+bg="linear-gradient(135deg,#ffb199,#ff0844)";
+
+break;
+
+
+
+case "Emerald Garden":
+
+bg="linear-gradient(135deg,#86efac,#16a34a)";
+
+break;
+
+
+
+case "Moonlight Silver":
+
+bg="linear-gradient(135deg,#e5e7eb,#64748b)";
+
+break;
+
+
+
+case "Golden Era":
+
+bg="linear-gradient(135deg,#fde68a,#d97706)";
+
+break;
+
+
+
+case "Ocean Breeze":
+
+bg="linear-gradient(135deg,#7dd3fc,#2563eb)";
+
+break;
+
+
+
+}
+
+
+
+document.querySelector(
+".background"
+).style.background=bg;
+
+
+
+
+let user=
+
+JSON.parse(
+localStorage.getItem(
+"alreadyMineUser"
+)
+);
+
+
+
+user.theme=selected;
+
+
+
+localStorage.setItem(
+
+"alreadyMineUser",
+
+JSON.stringify(user)
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// ==========================
+// LOAD PROFILE WHEN OPENED
+// ==========================
+
+
+
+let oldOpen=
+
+openScreen;
+
+
+
+openScreen=function(id){
+
+
+oldOpen(id);
+
+
+
+if(id==="home"){
+
+loadHome();
+
+}
+
+
+
+if(id==="profile"){
+
+loadProfile();
+
+}
+
+
+}
+
+
+
+
+// Initial load
+
+setTimeout(()=>{
+
+let user =
+localStorage.getItem(
+"alreadyMineUser"
+);
+
+
+
+if(user){
+
+loadHome();
+
+}
+
+
+},2500);
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+
+</html>
